@@ -1,0 +1,7 @@
+
+
+module.exports = (id) => {
+    return {
+
+    };
+};
