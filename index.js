@@ -25,6 +25,7 @@ client.on('ready', () => {
         game.register(require('./modules/base'));
         game.register(require('./modules/chest'));
         game.register(require('./modules/fight'));
+        game.register(require('./modules/casino'));
         games[channel.id] = game;
         game.start();
     });

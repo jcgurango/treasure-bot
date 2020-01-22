@@ -39,17 +39,20 @@ module.exports = (game) => {
         Promise.all(emojis.map(async (emoji) => newMessage.react(emoji)));
 
         let user = null;
+        let emoji = null;
     
         await newMessage.awaitReactions(
                 (reaction, user) => user.id !== newMessage.author.id && (!filter || filter(reaction, user)),
                 { max: 1, time: 60 * 60 * 1000, errors: ['time'] }
             )
             .then(async (collected) => {
-                const { users } = collected.first();
+                const reaction = collected.first();
+                const { users } = reaction;
                 const winner = users.last();
     
                 if (winner) {
                     user = winner;
+                    emoji = reaction.emoji.name;
                 }
             })
             .catch(() => { });
@@ -57,6 +60,7 @@ module.exports = (game) => {
         return {
             user,
             message: newMessage,
+            emoji,
         };
     };
 
