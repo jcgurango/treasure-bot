@@ -80,11 +80,15 @@ const trigger = async () => {
 
         attachment = attachment.setImage(gif);
         const message = await channel.send(attachment);
+        const emojis = [emoji, ...randomEmoji.random({ count: 5 }).map(({ character }) => character)];
+        emojis.sort(() => Math.random() * 2 - 1);
 
-        await message.awaitReactions((reaction) => reaction.emoji.name === emoji, { max: 1, time: 60 * 60 * 1000, errors: ['time'] })
+        Promise.all(emojis.map(async (emoji) => message.react(emoji)));
+
+        await message.awaitReactions((reaction, user) => reaction.emoji.name === emoji && user.id !== message.author.id, { max: 1, time: 60 * 60 * 1000, errors: ['time'] })
             .then(async (collected) => {
                 const { users } = collected.first();
-                const winner = users.first();
+                const winner = users.last();
 
                 if (winner) {
                     await db.incrementBalance(winner.id, amount);
