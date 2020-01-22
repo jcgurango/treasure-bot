@@ -12,6 +12,7 @@
     "discord.js": "^11.5.1",
     "giphy-api": "^2.0.1",
     "node-localdb": "0.0.3",
+    "pretty-ms": "^5.1.0",
     "random-emoji": "^1.0.2",
     "sentencer": "^0.2.0"
   },

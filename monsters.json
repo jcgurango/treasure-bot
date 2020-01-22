@@ -1,0 +1,2782 @@
+[
+    {
+        "name": "Frog",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Sea Horse",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Awakened Shrub",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Baboon",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Badger",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Bat",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Cat",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Commoner",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Crab",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Cranium Rat",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Crawling Claw",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Deer",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Eagle",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Giant Fire Beetle",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Goat",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Hawk",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Homunculus",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Hyena",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Jackal",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Lemure",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Lizard",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Myconid Sprout",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Octopus",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Owl",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Quipper",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Rat",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Raven",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Scorpion",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Shrieker",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Spider",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Vulture",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Weasel",
+        "challenge": 0.0625
+    },
+    {
+        "name": "Bandit",
+        "challenge": 0.125
+    },
+    {
+        "name": "Blood Hawk",
+        "challenge": 0.125
+    },
+    {
+        "name": "Boggle",
+        "challenge": 0.125
+    },
+    {
+        "name": "Camel",
+        "challenge": 0.125
+    },
+    {
+        "name": "Cultist",
+        "challenge": 0.125
+    },
+    {
+        "name": "Dolphin",
+        "challenge": 0.125
+    },
+    {
+        "name": "Flumph",
+        "challenge": 0.125
+    },
+    {
+        "name": "Flying Snake",
+        "challenge": 0.125
+    },
+    {
+        "name": "Giant Crab",
+        "challenge": 0.125
+    },
+    {
+        "name": "Giant Rat",
+        "challenge": 0.125
+    },
+    {
+        "name": "Giant Weasel",
+        "challenge": 0.125
+    },
+    {
+        "name": "Guard",
+        "challenge": 0.125
+    },
+    {
+        "name": "Kobold",
+        "challenge": 0.125
+    },
+    {
+        "name": "Manes",
+        "challenge": 0.125
+    },
+    {
+        "name": "Mastiff",
+        "challenge": 0.125
+    },
+    {
+        "name": "Merfolk",
+        "challenge": 0.125
+    },
+    {
+        "name": "Monodrone",
+        "challenge": 0.125
+    },
+    {
+        "name": "Mule",
+        "challenge": 0.125
+    },
+    {
+        "name": "Neogi Hatchling",
+        "challenge": 0.125
+    },
+    {
+        "name": "Noble",
+        "challenge": 0.125
+    },
+    {
+        "name": "Poisonous Snake",
+        "challenge": 0.125
+    },
+    {
+        "name": "Pony",
+        "challenge": 0.125
+    },
+    {
+        "name": "Slaad Tadpole",
+        "challenge": 0.125
+    },
+    {
+        "name": "Stirge",
+        "challenge": 0.125
+    },
+    {
+        "name": "Tribal Warrior",
+        "challenge": 0.125
+    },
+    {
+        "name": "Twig Blight",
+        "challenge": 0.125
+    },
+    {
+        "name": "Xvart",
+        "challenge": 0.125
+    },
+    {
+        "name": "Young Kruthik",
+        "challenge": 0.125
+    },
+    {
+        "name": "Aarakocra",
+        "challenge": 0.25
+    },
+    {
+        "name": "Abyssal Wretch",
+        "challenge": 0.25
+    },
+    {
+        "name": "Acolyte",
+        "challenge": 0.25
+    },
+    {
+        "name": "Apprentice Wizard",
+        "challenge": 0.25
+    },
+    {
+        "name": "Axe Beak",
+        "challenge": 0.25
+    },
+    {
+        "name": "Blink Dog",
+        "challenge": 0.25
+    },
+    {
+        "name": "Boar",
+        "challenge": 0.25
+    },
+    {
+        "name": "Bullywug",
+        "challenge": 0.25
+    },
+    {
+        "name": "Constrictor Snake",
+        "challenge": 0.25
+    },
+    {
+        "name": "Cow",
+        "challenge": 0.25
+    },
+    {
+        "name": "Deep Rothe",
+        "challenge": 0.25
+    },
+    {
+        "name": "Derro",
+        "challenge": 0.25
+    },
+    {
+        "name": "Dimetrodon",
+        "challenge": 0.25
+    },
+    {
+        "name": "Draft Horse",
+        "challenge": 0.25
+    },
+    {
+        "name": "Dretch",
+        "challenge": 0.25
+    },
+    {
+        "name": "Drow",
+        "challenge": 0.25
+    },
+    {
+        "name": "Duodrone",
+        "challenge": 0.25
+    },
+    {
+        "name": "Elk",
+        "challenge": 0.25
+    },
+    {
+        "name": "Flying Sword",
+        "challenge": 0.25
+    },
+    {
+        "name": "Giant Badger",
+        "challenge": 0.25
+    },
+    {
+        "name": "Giant Bat",
+        "challenge": 0.25
+    },
+    {
+        "name": "Giant Centipede",
+        "challenge": 0.25
+    },
+    {
+        "name": "Giant Frog",
+        "challenge": 0.25
+    },
+    {
+        "name": "Giant Lizard",
+        "challenge": 0.25
+    },
+    {
+        "name": "Giant Owl",
+        "challenge": 0.25
+    },
+    {
+        "name": "Giant Poisonous Snake",
+        "challenge": 0.25
+    },
+    {
+        "name": "Giant Wolf Spider",
+        "challenge": 0.25
+    },
+    {
+        "name": "Gnoll Witherling",
+        "challenge": 0.25
+    },
+    {
+        "name": "Goblin",
+        "challenge": 0.25
+    },
+    {
+        "name": "Grimlock",
+        "challenge": 0.25
+    },
+    {
+        "name": "Grung",
+        "challenge": 0.25
+    },
+    {
+        "name": "Hadrosaurus",
+        "challenge": 0.25
+    },
+    {
+        "name": "Kenku",
+        "challenge": 0.25
+    },
+    {
+        "name": "Kobold Inventor",
+        "challenge": 0.25
+    },
+    {
+        "name": "Kuo-toa",
+        "challenge": 0.25
+    },
+    {
+        "name": "Male Steeder",
+        "challenge": 0.25
+    },
+    {
+        "name": "Mud Mephit",
+        "challenge": 0.25
+    },
+    {
+        "name": "Needle Blight",
+        "challenge": 0.25
+    },
+    {
+        "name": "Oblex Spawn",
+        "challenge": 0.25
+    },
+    {
+        "name": "Ox",
+        "challenge": 0.25
+    },
+    {
+        "name": "Panther",
+        "challenge": 0.25
+    },
+    {
+        "name": "Pixie",
+        "challenge": 0.25
+    },
+    {
+        "name": "Pseudodragon",
+        "challenge": 0.25
+    },
+    {
+        "name": "Pteranodon",
+        "challenge": 0.25
+    },
+    {
+        "name": "Riding Horse",
+        "challenge": 0.25
+    },
+    {
+        "name": "Rothe",
+        "challenge": 0.25
+    },
+    {
+        "name": "Skeleton",
+        "challenge": 0.25
+    },
+    {
+        "name": "Smoke Mephit",
+        "challenge": 0.25
+    },
+    {
+        "name": "Sprite",
+        "challenge": 0.25
+    },
+    {
+        "name": "Star Spawn Grue",
+        "challenge": 0.25
+    },
+    {
+        "name": "Steam Mephit",
+        "challenge": 0.25
+    },
+    {
+        "name": "Stench Kow",
+        "challenge": 0.25
+    },
+    {
+        "name": "Swarm of Bats",
+        "challenge": 0.25
+    },
+    {
+        "name": "Swarm of Rats",
+        "challenge": 0.25
+    },
+    {
+        "name": "Swarm of Ravens",
+        "challenge": 0.25
+    },
+    {
+        "name": "Tortle",
+        "challenge": 0.25
+    },
+    {
+        "name": "Troglodyte",
+        "challenge": 0.25
+    },
+    {
+        "name": "Vegepygmy",
+        "challenge": 0.25
+    },
+    {
+        "name": "Velociraptor",
+        "challenge": 0.25
+    },
+    {
+        "name": "Violet Fungus",
+        "challenge": 0.25
+    },
+    {
+        "name": "Winged Kobold",
+        "challenge": 0.25
+    },
+    {
+        "name": "Wolf",
+        "challenge": 0.25
+    },
+    {
+        "name": "Wretched Sorrowsworn",
+        "challenge": 0.25
+    },
+    {
+        "name": "Zombie",
+        "challenge": 0.25
+    },
+    {
+        "name": "Ape",
+        "challenge": 0.5
+    },
+    {
+        "name": "Black Bear",
+        "challenge": 0.5
+    },
+    {
+        "name": "Chitine",
+        "challenge": 0.5
+    },
+    {
+        "name": "Cockatrice",
+        "challenge": 0.5
+    },
+    {
+        "name": "Crocodile",
+        "challenge": 0.5
+    },
+    {
+        "name": "Darkling",
+        "challenge": 0.5
+    },
+    {
+        "name": "Darkmantle",
+        "challenge": 0.5
+    },
+    {
+        "name": "Dust Mephit",
+        "challenge": 0.5
+    },
+    {
+        "name": "Firenewt Warrior",
+        "challenge": 0.5
+    },
+    {
+        "name": "Gas Spore",
+        "challenge": 0.5
+    },
+    {
+        "name": "Gazer",
+        "challenge": 0.5
+    },
+    {
+        "name": "Giant Goat",
+        "challenge": 0.5
+    },
+    {
+        "name": "Giant Sea Horse",
+        "challenge": 0.5
+    },
+    {
+        "name": "Giant Wasp",
+        "challenge": 0.5
+    },
+    {
+        "name": "Gnoll",
+        "challenge": 0.5
+    },
+    {
+        "name": "Gnoll Hunter",
+        "challenge": 0.5
+    },
+    {
+        "name": "Gray Ooze",
+        "challenge": 0.5
+    },
+    {
+        "name": "Hobgoblin",
+        "challenge": 0.5
+    },
+    {
+        "name": "Ice Mephit",
+        "challenge": 0.5
+    },
+    {
+        "name": "Jackalwere",
+        "challenge": 0.5
+    },
+    {
+        "name": "Lizardfolk",
+        "challenge": 0.5
+    },
+    {
+        "name": "Magma Mephit",
+        "challenge": 0.5
+    },
+    {
+        "name": "Magmin",
+        "challenge": 0.5
+    },
+    {
+        "name": "Myconid Adult",
+        "challenge": 0.5
+    },
+    {
+        "name": "Nupperibo",
+        "challenge": 0.5
+    },
+    {
+        "name": "Orc",
+        "challenge": 0.5
+    },
+    {
+        "name": "Orc Nurtured One of Yurtrus",
+        "challenge": 0.5
+    },
+    {
+        "name": "Piercer",
+        "challenge": 0.5
+    },
+    {
+        "name": "Reef Shark",
+        "challenge": 0.5
+    },
+    {
+        "name": "Rust Monster",
+        "challenge": 0.5
+    },
+    {
+        "name": "Sahuagin",
+        "challenge": 0.5
+    },
+    {
+        "name": "Satyr",
+        "challenge": 0.5
+    },
+    {
+        "name": "Scout",
+        "challenge": 0.5
+    },
+    {
+        "name": "Shadow",
+        "challenge": 0.5
+    },
+    {
+        "name": "Skulk",
+        "challenge": 0.5
+    },
+    {
+        "name": "Svirfneblin",
+        "challenge": 0.5
+    },
+    {
+        "name": "Swarm of Insects",
+        "challenge": 0.5
+    },
+    {
+        "name": "Swarm of Rot Grubs",
+        "challenge": 0.5
+    },
+    {
+        "name": "Thug",
+        "challenge": 0.5
+    },
+    {
+        "name": "Tridrone",
+        "challenge": 0.5
+    },
+    {
+        "name": "Vine Blight",
+        "challenge": 0.5
+    },
+    {
+        "name": "Warhorse",
+        "challenge": 0.5
+    },
+    {
+        "name": "Warhorse Skeleton",
+        "challenge": 0.5
+    },
+    {
+        "name": "Worg",
+        "challenge": 0.5
+    },
+    {
+        "name": "Animated Armor",
+        "challenge": 1
+    },
+    {
+        "name": "Brass Dragon Wyrmling",
+        "challenge": 1
+    },
+    {
+        "name": "Bronze Scout",
+        "challenge": 1
+    },
+    {
+        "name": "Brown Bear",
+        "challenge": 1
+    },
+    {
+        "name": "Bugbear",
+        "challenge": 1
+    },
+    {
+        "name": "Choker",
+        "challenge": 1
+    },
+    {
+        "name": "Copper Dragon Wyrmling",
+        "challenge": 1
+    },
+    {
+        "name": "Death Dog",
+        "challenge": 1
+    },
+    {
+        "name": "Deinonychus",
+        "challenge": 1
+    },
+    {
+        "name": "Dire Wolf",
+        "challenge": 1
+    },
+    {
+        "name": "Dryad",
+        "challenge": 1
+    },
+    {
+        "name": "Duergar",
+        "challenge": 1
+    },
+    {
+        "name": "Duergar Soulblade",
+        "challenge": 1
+    },
+    {
+        "name": "Female Steeder",
+        "challenge": 1
+    },
+    {
+        "name": "Fire Snake",
+        "challenge": 1
+    },
+    {
+        "name": "Firenewt Warlock of Imix",
+        "challenge": 1
+    },
+    {
+        "name": "Ghoul",
+        "challenge": 1
+    },
+    {
+        "name": "Giant Eagle",
+        "challenge": 1
+    },
+    {
+        "name": "Giant Hyena",
+        "challenge": 1
+    },
+    {
+        "name": "Giant Octopus",
+        "challenge": 1
+    },
+    {
+        "name": "Giant Spider",
+        "challenge": 1
+    },
+    {
+        "name": "Giant Strider",
+        "challenge": 1
+    },
+    {
+        "name": "Giant Toad",
+        "challenge": 1
+    },
+    {
+        "name": "Giant Vulture",
+        "challenge": 1
+    },
+    {
+        "name": "Gnoll Flesh Gnawer",
+        "challenge": 1
+    },
+    {
+        "name": "Goblin Boss",
+        "challenge": 1
+    },
+    {
+        "name": "Grung Wildling",
+        "challenge": 1
+    },
+    {
+        "name": "Half-ogre",
+        "challenge": 1
+    },
+    {
+        "name": "Harpy",
+        "challenge": 1
+    },
+    {
+        "name": "Hippogriff",
+        "challenge": 1
+    },
+    {
+        "name": "Imp",
+        "challenge": 1
+    },
+    {
+        "name": "Kobold Dragonshield",
+        "challenge": 1
+    },
+    {
+        "name": "Kobold Scale Sorcerer",
+        "challenge": 1
+    },
+    {
+        "name": "Kuo-toa Whip",
+        "challenge": 1
+    },
+    {
+        "name": "Lion",
+        "challenge": 1
+    },
+    {
+        "name": "Maw Demon",
+        "challenge": 1
+    },
+    {
+        "name": "Meazel",
+        "challenge": 1
+    },
+    {
+        "name": "Nilbog",
+        "challenge": 1
+    },
+    {
+        "name": "Quadrone",
+        "challenge": 1
+    },
+    {
+        "name": "Quaggoth Spore Servant",
+        "challenge": 1
+    },
+    {
+        "name": "Quasit",
+        "challenge": 1
+    },
+    {
+        "name": "Quickling",
+        "challenge": 1
+    },
+    {
+        "name": "Scarecrow",
+        "challenge": 1
+    },
+    {
+        "name": "Sea Spawn",
+        "challenge": 1
+    },
+    {
+        "name": "Specter",
+        "challenge": 1
+    },
+    {
+        "name": "Spy",
+        "challenge": 1
+    },
+    {
+        "name": "Stone Cursed",
+        "challenge": 1
+    },
+    {
+        "name": "Swarm of Quippers",
+        "challenge": 1
+    },
+    {
+        "name": "Thorny",
+        "challenge": 1
+    },
+    {
+        "name": "Thri-kreen",
+        "challenge": 1
+    },
+    {
+        "name": "Tiger",
+        "challenge": 1
+    },
+    {
+        "name": "Vargouille",
+        "challenge": 1
+    },
+    {
+        "name": "Xvart Warlock of Raxivort",
+        "challenge": 1
+    },
+    {
+        "name": "Young Faerie Dragon",
+        "challenge": 1
+    },
+    {
+        "name": "Yuan-ti Pureblood",
+        "challenge": 1
+    },
+    {
+        "name": "Adult Faerie Dragon",
+        "challenge": 2
+    },
+    {
+        "name": "Adult Kruthik",
+        "challenge": 2
+    },
+    {
+        "name": "Allosaurus",
+        "challenge": 2
+    },
+    {
+        "name": "Ankheg",
+        "challenge": 2
+    },
+    {
+        "name": "Aurochs",
+        "challenge": 2
+    },
+    {
+        "name": "Awakened Tree",
+        "challenge": 2
+    },
+    {
+        "name": "Azer",
+        "challenge": 2
+    },
+    {
+        "name": "Bandit Captain",
+        "challenge": 2
+    },
+    {
+        "name": "Bard",
+        "challenge": 2
+    },
+    {
+        "name": "Berbalang",
+        "challenge": 2
+    },
+    {
+        "name": "Berserker",
+        "challenge": 2
+    },
+    {
+        "name": "Black Dragon Wyrmling",
+        "challenge": 2
+    },
+    {
+        "name": "Bronze Dragon Wyrmling",
+        "challenge": 2
+    },
+    {
+        "name": "Carrion Crawler",
+        "challenge": 2
+    },
+    {
+        "name": "Cave Bear",
+        "challenge": 2
+    },
+    {
+        "name": "Centaur",
+        "challenge": 2
+    },
+    {
+        "name": "Cult Fanatic",
+        "challenge": 2
+    },
+    {
+        "name": "Darkling Elder",
+        "challenge": 2
+    },
+    {
+        "name": "Druid",
+        "challenge": 2
+    },
+    {
+        "name": "Duergar Hammerer",
+        "challenge": 2
+    },
+    {
+        "name": "Duergar Kavalrachni",
+        "challenge": 2
+    },
+    {
+        "name": "Duergar Mind Master",
+        "challenge": 2
+    },
+    {
+        "name": "Duergar Stone Guard",
+        "challenge": 2
+    },
+    {
+        "name": "Duergar Xarrorn",
+        "challenge": 2
+    },
+    {
+        "name": "Ettercap",
+        "challenge": 2
+    },
+    {
+        "name": "Gargoyle",
+        "challenge": 2
+    },
+    {
+        "name": "Gelatinous Cube",
+        "challenge": 2
+    },
+    {
+        "name": "Ghast",
+        "challenge": 2
+    },
+    {
+        "name": "Giant Boar",
+        "challenge": 2
+    },
+    {
+        "name": "Giant Constrictor Snake",
+        "challenge": 2
+    },
+    {
+        "name": "Giant Elk",
+        "challenge": 2
+    },
+    {
+        "name": "Gibbering Mouther",
+        "challenge": 2
+    },
+    {
+        "name": "Githzerai Monk",
+        "challenge": 2
+    },
+    {
+        "name": "Gnoll Pack Lord",
+        "challenge": 2
+    },
+    {
+        "name": "Green Dragon Wyrmling",
+        "challenge": 2
+    },
+    {
+        "name": "Grick",
+        "challenge": 2
+    },
+    {
+        "name": "Griffon",
+        "challenge": 2
+    },
+    {
+        "name": "Grung Elite Warrior",
+        "challenge": 2
+    },
+    {
+        "name": "Guard Drake",
+        "challenge": 2
+    },
+    {
+        "name": "Hobgoblin Iron Shadow",
+        "challenge": 2
+    },
+    {
+        "name": "Hunter Shark",
+        "challenge": 2
+    },
+    {
+        "name": "Intellect Devourer",
+        "challenge": 2
+    },
+    {
+        "name": "Lizardfolk Shaman",
+        "challenge": 2
+    },
+    {
+        "name": "Meenlock",
+        "challenge": 2
+    },
+    {
+        "name": "Merrow",
+        "challenge": 2
+    },
+    {
+        "name": "Mimic",
+        "challenge": 2
+    },
+    {
+        "name": "Minotaur Skeleton",
+        "challenge": 2
+    },
+    {
+        "name": "Myconid Sovereign",
+        "challenge": 2
+    },
+    {
+        "name": "Nothic",
+        "challenge": 2
+    },
+    {
+        "name": "Ochre Jelly",
+        "challenge": 2
+    },
+    {
+        "name": "Ogre",
+        "challenge": 2
+    },
+    {
+        "name": "Ogre Bolt Launcher",
+        "challenge": 2
+    },
+    {
+        "name": "Ogre Howdah",
+        "challenge": 2
+    },
+    {
+        "name": "Ogre Zombie",
+        "challenge": 2
+    },
+    {
+        "name": "Orc Claw of Luthic",
+        "challenge": 2
+    },
+    {
+        "name": "Orc Eye of Gruumsh",
+        "challenge": 2
+    },
+    {
+        "name": "Orc Hand of Yurtrus",
+        "challenge": 2
+    },
+    {
+        "name": "Orog",
+        "challenge": 2
+    },
+    {
+        "name": "Pegasus",
+        "challenge": 2
+    },
+    {
+        "name": "Pentadrone",
+        "challenge": 2
+    },
+    {
+        "name": "Peryton",
+        "challenge": 2
+    },
+    {
+        "name": "Plesiosaurus",
+        "challenge": 2
+    },
+    {
+        "name": "Polar Bear",
+        "challenge": 2
+    },
+    {
+        "name": "Priest",
+        "challenge": 2
+    },
+    {
+        "name": "Quaggoth",
+        "challenge": 2
+    },
+    {
+        "name": "Quetzalcoatlus",
+        "challenge": 2
+    },
+    {
+        "name": "Rhinoceros",
+        "challenge": 2
+    },
+    {
+        "name": "Rug of Smothering",
+        "challenge": 2
+    },
+    {
+        "name": "Rutterkin",
+        "challenge": 2
+    },
+    {
+        "name": "Saber-toothed Tiger",
+        "challenge": 2
+    },
+    {
+        "name": "Sahuagin Priestess",
+        "challenge": 2
+    },
+    {
+        "name": "Sea Hag",
+        "challenge": 2
+    },
+    {
+        "name": "Shadow Mastiff",
+        "challenge": 2
+    },
+    {
+        "name": "Silver Dragon Wyrmling",
+        "challenge": 2
+    },
+    {
+        "name": "Specter (poltergeist)",
+        "challenge": 2
+    },
+    {
+        "name": "Spined Devil",
+        "challenge": 2
+    },
+    {
+        "name": "Swarm of Poisonous Snakes",
+        "challenge": 2
+    },
+    {
+        "name": "Tortle Druid",
+        "challenge": 2
+    },
+    {
+        "name": "Vegepygmy Chief",
+        "challenge": 2
+    },
+    {
+        "name": "Wererat",
+        "challenge": 2
+    },
+    {
+        "name": "White Dragon Wyrmling",
+        "challenge": 2
+    },
+    {
+        "name": "Will-o-wisp",
+        "challenge": 2
+    },
+    {
+        "name": "Yuan-ti Broodguard",
+        "challenge": 2
+    },
+    {
+        "name": "Ankylosaurus",
+        "challenge": 3
+    },
+    {
+        "name": "Archer",
+        "challenge": 3
+    },
+    {
+        "name": "Basilisk",
+        "challenge": 3
+    },
+    {
+        "name": "Bearded Devil",
+        "challenge": 3
+    },
+    {
+        "name": "Blue Dragon Wyrmling",
+        "challenge": 3
+    },
+    {
+        "name": "Bugbear Chief",
+        "challenge": 3
+    },
+    {
+        "name": "Bulezau",
+        "challenge": 3
+    },
+    {
+        "name": "Cave Fisher",
+        "challenge": 3
+    },
+    {
+        "name": "Choldrith",
+        "challenge": 3
+    },
+    {
+        "name": "Deathlock Wight",
+        "challenge": 3
+    },
+    {
+        "name": "Deep Scion",
+        "challenge": 3
+    },
+    {
+        "name": "Derro Savant",
+        "challenge": 3
+    },
+    {
+        "name": "Displacer Beast",
+        "challenge": 3
+    },
+    {
+        "name": "Doppelganger",
+        "challenge": 3
+    },
+    {
+        "name": "Duergar Screamer",
+        "challenge": 3
+    },
+    {
+        "name": "Flail Snail",
+        "challenge": 3
+    },
+    {
+        "name": "Giant Scorpion",
+        "challenge": 3
+    },
+    {
+        "name": "Giff",
+        "challenge": 3
+    },
+    {
+        "name": "Githyanki Warrior",
+        "challenge": 3
+    },
+    {
+        "name": "Gold Dragon Wyrmling",
+        "challenge": 3
+    },
+    {
+        "name": "Green Hag",
+        "challenge": 3
+    },
+    {
+        "name": "Grell",
+        "challenge": 3
+    },
+    {
+        "name": "Hell Hound",
+        "challenge": 3
+    },
+    {
+        "name": "Hobgoblin Captain",
+        "challenge": 3
+    },
+    {
+        "name": "Hook Horror",
+        "challenge": 3
+    },
+    {
+        "name": "Illusionist",
+        "challenge": 3
+    },
+    {
+        "name": "Killer Whale",
+        "challenge": 3
+    },
+    {
+        "name": "Knight",
+        "challenge": 3
+    },
+    {
+        "name": "Leucrotta",
+        "challenge": 3
+    },
+    {
+        "name": "Manticore",
+        "challenge": 3
+    },
+    {
+        "name": "Martial Arts Adept",
+        "challenge": 3
+    },
+    {
+        "name": "Merrenoloth",
+        "challenge": 3
+    },
+    {
+        "name": "Minotaur",
+        "challenge": 3
+    },
+    {
+        "name": "Mummy",
+        "challenge": 3
+    },
+    {
+        "name": "Neogi",
+        "challenge": 3
+    },
+    {
+        "name": "Nightmare",
+        "challenge": 3
+    },
+    {
+        "name": "Ogre Chain Brute",
+        "challenge": 3
+    },
+    {
+        "name": "Orc Red Fang of Shargaas",
+        "challenge": 3
+    },
+    {
+        "name": "Owlbear",
+        "challenge": 3
+    },
+    {
+        "name": "Phase Spider",
+        "challenge": 3
+    },
+    {
+        "name": "Quaggoth Thonot",
+        "challenge": 3
+    },
+    {
+        "name": "Redcap",
+        "challenge": 3
+    },
+    {
+        "name": "Slithering Tracker",
+        "challenge": 3
+    },
+    {
+        "name": "Spectator",
+        "challenge": 3
+    },
+    {
+        "name": "Swashbuckler",
+        "challenge": 3
+    },
+    {
+        "name": "Sword Wraith Warrior",
+        "challenge": 3
+    },
+    {
+        "name": "Trapper",
+        "challenge": 3
+    },
+    {
+        "name": "Vampiric Mist",
+        "challenge": 3
+    },
+    {
+        "name": "Veteran",
+        "challenge": 3
+    },
+    {
+        "name": "Water Weird",
+        "challenge": 3
+    },
+    {
+        "name": "Werewolf",
+        "challenge": 3
+    },
+    {
+        "name": "Wight",
+        "challenge": 3
+    },
+    {
+        "name": "Winter Wolf",
+        "challenge": 3
+    },
+    {
+        "name": "Yeti",
+        "challenge": 3
+    },
+    {
+        "name": "Yuan-ti Malison",
+        "challenge": 3
+    },
+    {
+        "name": "Babau",
+        "challenge": 4
+    },
+    {
+        "name": "Banshee",
+        "challenge": 4
+    },
+    {
+        "name": "Barghest",
+        "challenge": 4
+    },
+    {
+        "name": "Black Pudding",
+        "challenge": 4
+    },
+    {
+        "name": "Bone Naga",
+        "challenge": 4
+    },
+    {
+        "name": "Chuul",
+        "challenge": 4
+    },
+    {
+        "name": "Couatl",
+        "challenge": 4
+    },
+    {
+        "name": "Deathlock",
+        "challenge": 4
+    },
+    {
+        "name": "Dybbuk",
+        "challenge": 4
+    },
+    {
+        "name": "Elephant",
+        "challenge": 4
+    },
+    {
+        "name": "Ettin",
+        "challenge": 4
+    },
+    {
+        "name": "Flameskull",
+        "challenge": 4
+    },
+    {
+        "name": "Ghost",
+        "challenge": 4
+    },
+    {
+        "name": "Girallon",
+        "challenge": 4
+    },
+    {
+        "name": "Gnoll Fang of Yeenoghu",
+        "challenge": 4
+    },
+    {
+        "name": "Helmed Horror",
+        "challenge": 4
+    },
+    {
+        "name": "Hobgoblin Devastator",
+        "challenge": 4
+    },
+    {
+        "name": "Incubus",
+        "challenge": 4
+    },
+    {
+        "name": "Iron Cobra",
+        "challenge": 4
+    },
+    {
+        "name": "Lamia",
+        "challenge": 4
+    },
+    {
+        "name": "Lizard King/Queen",
+        "challenge": 4
+    },
+    {
+        "name": "Merregon",
+        "challenge": 4
+    },
+    {
+        "name": "Neogi Master",
+        "challenge": 4
+    },
+    {
+        "name": "Ogre Battering Ram",
+        "challenge": 4
+    },
+    {
+        "name": "Orc Blade of Ilneval",
+        "challenge": 4
+    },
+    {
+        "name": "Orc War Chief",
+        "challenge": 4
+    },
+    {
+        "name": "Red Dragon Wyrmling",
+        "challenge": 4
+    },
+    {
+        "name": "Shadow Demon",
+        "challenge": 4
+    },
+    {
+        "name": "Stegosaurus",
+        "challenge": 4
+    },
+    {
+        "name": "Stone Defender",
+        "challenge": 4
+    },
+    {
+        "name": "Succubus",
+        "challenge": 4
+    },
+    {
+        "name": "Warlock of the Archfey",
+        "challenge": 4
+    },
+    {
+        "name": "Wereboar",
+        "challenge": 4
+    },
+    {
+        "name": "Weretiger",
+        "challenge": 4
+    },
+    {
+        "name": "Yeth Hound",
+        "challenge": 4
+    },
+    {
+        "name": "Yuan-ti Mind Whisperer",
+        "challenge": 4
+    },
+    {
+        "name": "Yuan-ti Nightmare Speaker",
+        "challenge": 4
+    },
+    {
+        "name": "Adult Oblex",
+        "challenge": 5
+    },
+    {
+        "name": "Air Elemental",
+        "challenge": 5
+    },
+    {
+        "name": "Allip",
+        "challenge": 5
+    },
+    {
+        "name": "Banderhobb",
+        "challenge": 5
+    },
+    {
+        "name": "Barbed Devil",
+        "challenge": 5
+    },
+    {
+        "name": "Barlgura",
+        "challenge": 5
+    },
+    {
+        "name": "Beholder Zombie",
+        "challenge": 5
+    },
+    {
+        "name": "Brontosaurus",
+        "challenge": 5
+    },
+    {
+        "name": "Bulette",
+        "challenge": 5
+    },
+    {
+        "name": "Cambion",
+        "challenge": 5
+    },
+    {
+        "name": "Catoblepas",
+        "challenge": 5
+    },
+    {
+        "name": "Drow Elite Warrior",
+        "challenge": 5
+    },
+    {
+        "name": "Earth Elemental",
+        "challenge": 5
+    },
+    {
+        "name": "Enchanter",
+        "challenge": 5
+    },
+    {
+        "name": "Fire Elemental",
+        "challenge": 5
+    },
+    {
+        "name": "Flesh Golem",
+        "challenge": 5
+    },
+    {
+        "name": "Giant Crocodile",
+        "challenge": 5
+    },
+    {
+        "name": "Giant Shark",
+        "challenge": 5
+    },
+    {
+        "name": "Gladiator",
+        "challenge": 5
+    },
+    {
+        "name": "Gorgon",
+        "challenge": 5
+    },
+    {
+        "name": "Half-Red Dragon Veteran",
+        "challenge": 5
+    },
+    {
+        "name": "Hill Giant",
+        "challenge": 5
+    },
+    {
+        "name": "Kraken Priest",
+        "challenge": 5
+    },
+    {
+        "name": "Kruthik Hive Lord",
+        "challenge": 5
+    },
+    {
+        "name": "Master Thief",
+        "challenge": 5
+    },
+    {
+        "name": "Mezzoloth",
+        "challenge": 5
+    },
+    {
+        "name": "Mindwitness",
+        "challenge": 5
+    },
+    {
+        "name": "Night Hag",
+        "challenge": 5
+    },
+    {
+        "name": "Oaken Bolter",
+        "challenge": 5
+    },
+    {
+        "name": "Otyugh",
+        "challenge": 5
+    },
+    {
+        "name": "Red Slaad",
+        "challenge": 5
+    },
+    {
+        "name": "Revenant",
+        "challenge": 5
+    },
+    {
+        "name": "Roper",
+        "challenge": 5
+    },
+    {
+        "name": "Sahuagin Baron",
+        "challenge": 5
+    },
+    {
+        "name": "Salamander",
+        "challenge": 5
+    },
+    {
+        "name": "Shambling Mound",
+        "challenge": 5
+    },
+    {
+        "name": "Spawn of Kyuss",
+        "challenge": 5
+    },
+    {
+        "name": "Star Spawn Mangler",
+        "challenge": 5
+    },
+    {
+        "name": "Swarm of Cranium Rats",
+        "challenge": 5
+    },
+    {
+        "name": "Tanarukk",
+        "challenge": 5
+    },
+    {
+        "name": "Tlincalli",
+        "challenge": 5
+    },
+    {
+        "name": "Transmuter",
+        "challenge": 5
+    },
+    {
+        "name": "Triceratops",
+        "challenge": 5
+    },
+    {
+        "name": "Troll",
+        "challenge": 5
+    },
+    {
+        "name": "Umber Hulk",
+        "challenge": 5
+    },
+    {
+        "name": "Unicorn",
+        "challenge": 5
+    },
+    {
+        "name": "Vampire Spawn",
+        "challenge": 5
+    },
+    {
+        "name": "Water Elemental",
+        "challenge": 5
+    },
+    {
+        "name": "Werebear",
+        "challenge": 5
+    },
+    {
+        "name": "Wood Woad",
+        "challenge": 5
+    },
+    {
+        "name": "Wraith",
+        "challenge": 5
+    },
+    {
+        "name": "Xorn",
+        "challenge": 5
+    },
+    {
+        "name": "Young Remorhaz",
+        "challenge": 5
+    },
+    {
+        "name": "Yuan-ti Pit Master",
+        "challenge": 5
+    },
+    {
+        "name": "Annis Hag",
+        "challenge": 6
+    },
+    {
+        "name": "Bodak",
+        "challenge": 6
+    },
+    {
+        "name": "Chasme",
+        "challenge": 6
+    },
+    {
+        "name": "Chimera",
+        "challenge": 6
+    },
+    {
+        "name": "Conjurer",
+        "challenge": 6
+    },
+    {
+        "name": "Cyclops",
+        "challenge": 6
+    },
+    {
+        "name": "Drider",
+        "challenge": 6
+    },
+    {
+        "name": "Duergar Warlord",
+        "challenge": 6
+    },
+    {
+        "name": "Galeb Duhr",
+        "challenge": 6
+    },
+    {
+        "name": "Gauth",
+        "challenge": 6
+    },
+    {
+        "name": "Githzerai Zerth",
+        "challenge": 6
+    },
+    {
+        "name": "Hobgoblin Warlord",
+        "challenge": 6
+    },
+    {
+        "name": "Invisible Stalker",
+        "challenge": 6
+    },
+    {
+        "name": "Kuo-toa Archpriest",
+        "challenge": 6
+    },
+    {
+        "name": "Mage",
+        "challenge": 6
+    },
+    {
+        "name": "Mammoth",
+        "challenge": 6
+    },
+    {
+        "name": "Medusa",
+        "challenge": 6
+    },
+    {
+        "name": "Mouth of Grolantor",
+        "challenge": 6
+    },
+    {
+        "name": "Vrock",
+        "challenge": 6
+    },
+    {
+        "name": "Warlock of the Great Old One",
+        "challenge": 6
+    },
+    {
+        "name": "White Abishai",
+        "challenge": 6
+    },
+    {
+        "name": "Wyvern",
+        "challenge": 6
+    },
+    {
+        "name": "Young Brass Dragon",
+        "challenge": 6
+    },
+    {
+        "name": "Young White Dragon",
+        "challenge": 6
+    },
+    {
+        "name": "Air Elemental Myrmidon",
+        "challenge": 7
+    },
+    {
+        "name": "Armanite",
+        "challenge": 7
+    },
+    {
+        "name": "Bheur Hag",
+        "challenge": 7
+    },
+    {
+        "name": "Black Abishai",
+        "challenge": 7
+    },
+    {
+        "name": "Blue Slaad",
+        "challenge": 7
+    },
+    {
+        "name": "Dhergoloth",
+        "challenge": 7
+    },
+    {
+        "name": "Draegloth",
+        "challenge": 7
+    },
+    {
+        "name": "Drow Mage",
+        "challenge": 7
+    },
+    {
+        "name": "Earth Elemental Myrmidon",
+        "challenge": 7
+    },
+    {
+        "name": "Fire Elemental Myrmidon",
+        "challenge": 7
+    },
+    {
+        "name": "Giant Ape",
+        "challenge": 7
+    },
+    {
+        "name": "Grick Alpha",
+        "challenge": 7
+    },
+    {
+        "name": "Korred",
+        "challenge": 7
+    },
+    {
+        "name": "Lost Sorrowsworn",
+        "challenge": 7
+    },
+    {
+        "name": "Maurezhi",
+        "challenge": 7
+    },
+    {
+        "name": "Mind Flayer",
+        "challenge": 7
+    },
+    {
+        "name": "Oni",
+        "challenge": 7
+    },
+    {
+        "name": "Shadow Dancer",
+        "challenge": 7
+    },
+    {
+        "name": "Shield Guardian",
+        "challenge": 7
+    },
+    {
+        "name": "Stone Giant",
+        "challenge": 7
+    },
+    {
+        "name": "Venom Troll",
+        "challenge": 7
+    },
+    {
+        "name": "Warlock of the Fiend",
+        "challenge": 7
+    },
+    {
+        "name": "Water Elemental Myrmidon",
+        "challenge": 7
+    },
+    {
+        "name": "Young Black Dragon",
+        "challenge": 7
+    },
+    {
+        "name": "Young Copper Dragon",
+        "challenge": 7
+    },
+    {
+        "name": "Yuan-ti Abomination",
+        "challenge": 7
+    },
+    {
+        "name": "Assassin",
+        "challenge": 8
+    },
+    {
+        "name": "Blackguard",
+        "challenge": 8
+    },
+    {
+        "name": "Canoloth",
+        "challenge": 8
+    },
+    {
+        "name": "Chain Devil",
+        "challenge": 8
+    },
+    {
+        "name": "Cloaker",
+        "challenge": 8
+    },
+    {
+        "name": "Corpse Flower",
+        "challenge": 8
+    },
+    {
+        "name": "Deathlock Mastermind",
+        "challenge": 8
+    },
+    {
+        "name": "Diviner",
+        "challenge": 8
+    },
+    {
+        "name": "Drow Priestess of Lolth",
+        "challenge": 8
+    },
+    {
+        "name": "Fomorian",
+        "challenge": 8
+    },
+    {
+        "name": "Frost Giant",
+        "challenge": 8
+    },
+    {
+        "name": "Githyanki Knight",
+        "challenge": 8
+    },
+    {
+        "name": "Green Slaad",
+        "challenge": 8
+    },
+    {
+        "name": "Hezrou",
+        "challenge": 8
+    },
+    {
+        "name": "Howler",
+        "challenge": 8
+    },
+    {
+        "name": "Hydra",
+        "challenge": 8
+    },
+    {
+        "name": "Mind Flayer Arcanist",
+        "challenge": 8
+    },
+    {
+        "name": "Shoosuva",
+        "challenge": 8
+    },
+    {
+        "name": "Spirit Naga",
+        "challenge": 8
+    },
+    {
+        "name": "Sword Wraith Commander",
+        "challenge": 8
+    },
+    {
+        "name": "Tyrannosaurus Rex",
+        "challenge": 8
+    },
+    {
+        "name": "Young Bronze Dragon",
+        "challenge": 8
+    },
+    {
+        "name": "Young Green Dragon",
+        "challenge": 8
+    },
+    {
+        "name": "Abjurer",
+        "challenge": 9
+    },
+    {
+        "name": "Abominable Yeti",
+        "challenge": 9
+    },
+    {
+        "name": "Bone Devil",
+        "challenge": 9
+    },
+    {
+        "name": "Champion",
+        "challenge": 9
+    },
+    {
+        "name": "Clay Golem",
+        "challenge": 9
+    },
+    {
+        "name": "Cloud Giant",
+        "challenge": 9
+    },
+    {
+        "name": "Drow House Captain",
+        "challenge": 9
+    },
+    {
+        "name": "Evoker",
+        "challenge": 9
+    },
+    {
+        "name": "Fire Giant",
+        "challenge": 9
+    },
+    {
+        "name": "Flind",
+        "challenge": 9
+    },
+    {
+        "name": "Frost Salamander",
+        "challenge": 9
+    },
+    {
+        "name": "Glabrezu",
+        "challenge": 9
+    },
+    {
+        "name": "Gloom Weaver",
+        "challenge": 9
+    },
+    {
+        "name": "Gray Slaad",
+        "challenge": 9
+    },
+    {
+        "name": "Hydroloth",
+        "challenge": 9
+    },
+    {
+        "name": "Lonely Sorrowsworn",
+        "challenge": 9
+    },
+    {
+        "name": "Necromancer",
+        "challenge": 9
+    },
+    {
+        "name": "Nycaloth",
+        "challenge": 9
+    },
+    {
+        "name": "Rot Troll",
+        "challenge": 9
+    },
+    {
+        "name": "Treant",
+        "challenge": 9
+    },
+    {
+        "name": "Ulitharid",
+        "challenge": 9
+    },
+    {
+        "name": "War Priest",
+        "challenge": 9
+    },
+    {
+        "name": "Young Blue Dragon",
+        "challenge": 9
+    },
+    {
+        "name": "Young Silver Dragon",
+        "challenge": 9
+    },
+    {
+        "name": "Aboleth",
+        "challenge": 10
+    },
+    {
+        "name": "Alhoon",
+        "challenge": 10
+    },
+    {
+        "name": "Autumn Eladrin",
+        "challenge": 10
+    },
+    {
+        "name": "Death Kiss",
+        "challenge": 10
+    },
+    {
+        "name": "Death Slaad",
+        "challenge": 10
+    },
+    {
+        "name": "Deva",
+        "challenge": 10
+    },
+    {
+        "name": "Elder Oblex",
+        "challenge": 10
+    },
+    {
+        "name": "Froghemoth",
+        "challenge": 10
+    },
+    {
+        "name": "Githyanki Gish",
+        "challenge": 10
+    },
+    {
+        "name": "Githzerai Enlightened",
+        "challenge": 10
+    },
+    {
+        "name": "Guardian Naga",
+        "challenge": 10
+    },
+    {
+        "name": "Orthon",
+        "challenge": 10
+    },
+    {
+        "name": "Spring Eladrin",
+        "challenge": 10
+    },
+    {
+        "name": "Star Spawn Hulk",
+        "challenge": 10
+    },
+    {
+        "name": "Stone Giant Dreamwalker",
+        "challenge": 10
+    },
+    {
+        "name": "Stone Golem",
+        "challenge": 10
+    },
+    {
+        "name": "Summer Eladrin",
+        "challenge": 10
+    },
+    {
+        "name": "Winter Eladrin",
+        "challenge": 10
+    },
+    {
+        "name": "Yochlol",
+        "challenge": 10
+    },
+    {
+        "name": "Young Gold Dragon",
+        "challenge": 10
+    },
+    {
+        "name": "Young Red Dragon",
+        "challenge": 10
+    },
+    {
+        "name": "Alkilith",
+        "challenge": 11
+    },
+    {
+        "name": "Balhannoth",
+        "challenge": 11
+    },
+    {
+        "name": "Behir",
+        "challenge": 11
+    },
+    {
+        "name": "Cloud Giant Smiling One",
+        "challenge": 11
+    },
+    {
+        "name": "Dao",
+        "challenge": 11
+    },
+    {
+        "name": "Djinni",
+        "challenge": 11
+    },
+    {
+        "name": "Drow Shadowblade",
+        "challenge": 11
+    },
+    {
+        "name": "Efreeti",
+        "challenge": 11
+    },
+    {
+        "name": "Gynosphinx",
+        "challenge": 11
+    },
+    {
+        "name": "Horned Devil",
+        "challenge": 11
+    },
+    {
+        "name": "Hungry Sorrowsworn",
+        "challenge": 11
+    },
+    {
+        "name": "Marid",
+        "challenge": 11
+    },
+    {
+        "name": "Morkoth",
+        "challenge": 11
+    },
+    {
+        "name": "Remorhaz",
+        "challenge": 11
+    },
+    {
+        "name": "Roc",
+        "challenge": 11
+    },
+    {
+        "name": "Soul Monger",
+        "challenge": 11
+    },
+    {
+        "name": "Spirit Troll",
+        "challenge": 11
+    },
+    {
+        "name": "Yagnoloth",
+        "challenge": 11
+    },
+    {
+        "name": "Arcanaloth",
+        "challenge": 12
+    },
+    {
+        "name": "Archdruid",
+        "challenge": 12
+    },
+    {
+        "name": "Archmage",
+        "challenge": 12
+    },
+    {
+        "name": "Boneclaw",
+        "challenge": 12
+    },
+    {
+        "name": "Duergar Despot",
+        "challenge": 12
+    },
+    {
+        "name": "Eidolon",
+        "challenge": 12
+    },
+    {
+        "name": "Erinyes",
+        "challenge": 12
+    },
+    {
+        "name": "Frost Giant Everlasting One",
+        "challenge": 12
+    },
+    {
+        "name": "Githyanki Kith'rak",
+        "challenge": 12
+    },
+    {
+        "name": "Gray Render",
+        "challenge": 12
+    },
+    {
+        "name": "Ki-rin",
+        "challenge": 12
+    },
+    {
+        "name": "Morkoth (in lair)",
+        "challenge": 12
+    },
+    {
+        "name": "Oinoloth",
+        "challenge": 12
+    },
+    {
+        "name": "Warlord",
+        "challenge": 12
+    },
+    {
+        "name": "Yuan-ti Anathema",
+        "challenge": 12
+    },
+    {
+        "name": "Adult Brass Dragon",
+        "challenge": 13
+    },
+    {
+        "name": "Adult White Dragon",
+        "challenge": 13
+    },
+    {
+        "name": "Angry Sorrowsworn",
+        "challenge": 13
+    },
+    {
+        "name": "Beholder",
+        "challenge": 13
+    },
+    {
+        "name": "Devourer",
+        "challenge": 13
+    },
+    {
+        "name": "Dire Troll",
+        "challenge": 13
+    },
+    {
+        "name": "Drow Arachnomancer",
+        "challenge": 13
+    },
+    {
+        "name": "Nalfeshnee",
+        "challenge": 13
+    },
+    {
+        "name": "Narzugon",
+        "challenge": 13
+    },
+    {
+        "name": "Neothelid",
+        "challenge": 13
+    },
+    {
+        "name": "Rakshasa",
+        "challenge": 13
+    },
+    {
+        "name": "Star Spawn Seer",
+        "challenge": 13
+    },
+    {
+        "name": "Storm Giant",
+        "challenge": 13
+    },
+    {
+        "name": "Ultroloth",
+        "challenge": 13
+    },
+    {
+        "name": "Vampire",
+        "challenge": 13
+    },
+    {
+        "name": "Wastrilith",
+        "challenge": 13
+    },
+    {
+        "name": "Young Red Shadow Dragon",
+        "challenge": 13
+    },
+    {
+        "name": "Adult Black Dragon",
+        "challenge": 14
+    },
+    {
+        "name": "Adult Copper Dragon",
+        "challenge": 14
+    },
+    {
+        "name": "Beholder (in lair)",
+        "challenge": 14
+    },
+    {
+        "name": "Cadaver Collector",
+        "challenge": 14
+    },
+    {
+        "name": "Death Tyrant",
+        "challenge": 14
+    },
+    {
+        "name": "Drow Inquisitor",
+        "challenge": 14
+    },
+    {
+        "name": "Elder Brain",
+        "challenge": 14
+    },
+    {
+        "name": "Fire Giant Dreadnought",
+        "challenge": 14
+    },
+    {
+        "name": "Githyanki Supreme Commander",
+        "challenge": 14
+    },
+    {
+        "name": "Ice Devil",
+        "challenge": 14
+    },
+    {
+        "name": "Retriever",
+        "challenge": 14
+    },
+    {
+        "name": "Adult Bronze Dragon",
+        "challenge": 15
+    },
+    {
+        "name": "Adult Green Dragon",
+        "challenge": 15
+    },
+    {
+        "name": "Death Tyrant (in lair)",
+        "challenge": 15
+    },
+    {
+        "name": "Green Abishai",
+        "challenge": 15
+    },
+    {
+        "name": "Mummy Lord",
+        "challenge": 15
+    },
+    {
+        "name": "Nabassu",
+        "challenge": 15
+    },
+    {
+        "name": "Purple Worm",
+        "challenge": 15
+    },
+    {
+        "name": "Skull Lord",
+        "challenge": 15
+    },
+    {
+        "name": "Vampire (spellcaster)",
+        "challenge": 15
+    },
+    {
+        "name": "Vampire (warrior)",
+        "challenge": 15
+    },
+    {
+        "name": "Adult Blue Dragon",
+        "challenge": 16
+    },
+    {
+        "name": "Adult Silver Dragon",
+        "challenge": 16
+    },
+    {
+        "name": "Githzerai Anarch",
+        "challenge": 16
+    },
+    {
+        "name": "Hellfire Engine",
+        "challenge": 16
+    },
+    {
+        "name": "Iron Golem",
+        "challenge": 16
+    },
+    {
+        "name": "Marilith",
+        "challenge": 16
+    },
+    {
+        "name": "Mummy Lord (in lair)",
+        "challenge": 16
+    },
+    {
+        "name": "Phoenix",
+        "challenge": 16
+    },
+    {
+        "name": "Planetar",
+        "challenge": 16
+    },
+    {
+        "name": "Star Spawn Larva Mage",
+        "challenge": 16
+    },
+    {
+        "name": "Steel Predator",
+        "challenge": 16
+    },
+    {
+        "name": "Storm Giant Quintessent",
+        "challenge": 16
+    },
+    {
+        "name": "Adult Blue Dracolich",
+        "challenge": 17
+    },
+    {
+        "name": "Adult Gold Dragon",
+        "challenge": 17
+    },
+    {
+        "name": "Adult Red Dragon",
+        "challenge": 17
+    },
+    {
+        "name": "Androsphinx",
+        "challenge": 17
+    },
+    {
+        "name": "Blue Abishai",
+        "challenge": 17
+    },
+    {
+        "name": "Death Knight",
+        "challenge": 17
+    },
+    {
+        "name": "Dragon Turtle",
+        "challenge": 17
+    },
+    {
+        "name": "Goristro",
+        "challenge": 17
+    },
+    {
+        "name": "Nagpa",
+        "challenge": 17
+    },
+    {
+        "name": "Amnizu",
+        "challenge": 18
+    },
+    {
+        "name": "Demilich",
+        "challenge": 18
+    },
+    {
+        "name": "Drow Favored Consort",
+        "challenge": 18
+    },
+    {
+        "name": "Sibriex",
+        "challenge": 18
+    },
+    {
+        "name": "Balor",
+        "challenge": 19
+    },
+    {
+        "name": "Red Abishai",
+        "challenge": 19
+    },
+    {
+        "name": "Demilich (in lair)",
+        "challenge": 20
+    },
+    {
+        "name": "Ancient Brass Dragon",
+        "challenge": 20
+    },
+    {
+        "name": "Ancient White Dragon",
+        "challenge": 20
+    },
+    {
+        "name": "Drow Matron Mother",
+        "challenge": 20
+    },
+    {
+        "name": "Leviathan",
+        "challenge": 20
+    },
+    {
+        "name": "Nightwalker",
+        "challenge": 20
+    },
+    {
+        "name": "Pit Fiend",
+        "challenge": 20
+    },
+    {
+        "name": "Ancient Black Dragon",
+        "challenge": 21
+    },
+    {
+        "name": "Ancient Copper Dragon",
+        "challenge": 21
+    },
+    {
+        "name": "Astral Dreadnought",
+        "challenge": 21
+    },
+    {
+        "name": "Lich",
+        "challenge": 21
+    },
+    {
+        "name": "Molydeus",
+        "challenge": 21
+    },
+    {
+        "name": "Solar",
+        "challenge": 21
+    },
+    {
+        "name": "Ancient Bronze Dragon",
+        "challenge": 22
+    },
+    {
+        "name": "Ancient Green Dragon",
+        "challenge": 22
+    },
+    {
+        "name": "Lich (in lair)",
+        "challenge": 22
+    },
+    {
+        "name": "Mind Flayer Lich",
+        "challenge": 22
+    },
+    {
+        "name": "Zaratan",
+        "challenge": 22
+    },
+    {
+        "name": "Ancient Blue Dragon",
+        "challenge": 23
+    },
+    {
+        "name": "Ancient Silver Dragon",
+        "challenge": 23
+    },
+    {
+        "name": "Elder Tempest",
+        "challenge": 23
+    },
+    {
+        "name": "Empyrean",
+        "challenge": 23
+    },
+    {
+        "name": "Kraken",
+        "challenge": 23
+    },
+    {
+        "name": "Ancient Gold Dragon",
+        "challenge": 24
+    },
+    {
+        "name": "Ancient Red Dragon",
+        "challenge": 24
+    },
+    {
+        "name": "Marut",
+        "challenge": 25
+    },
+    {
+        "name": "Tarrasque",
+        "challenge": 30
+    }
+]

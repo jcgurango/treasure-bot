@@ -31,6 +31,36 @@ module.exports = (prefix = 'default') => {
         return user.balance;
     };
 
+    const incrementKills = async (userId) => {
+        // First find the user.
+        const user = await getUser(userId);
+
+        // Add to the user's balance.
+        await users.update({
+            id: userId,
+        }, {
+            ...user,
+            kills: user.kills + 1,
+        });
+
+        return user.balance;
+    };
+
+    const incrementDeaths = async (userId) => {
+        // First find the user.
+        const user = await getUser(userId);
+
+        // Add to the user's balance.
+        await users.update({
+            id: userId,
+        }, {
+            ...user,
+            deaths: user.deaths + 1,
+        });
+
+        return user.balance;
+    };
+
     const incrementBalance = async (userId, amount) => {
         // First find the user.
         const user = await getUser(userId);
@@ -41,6 +71,21 @@ module.exports = (prefix = 'default') => {
         }, {
             ...user,
             balance: user.balance + amount,
+        });
+
+        return user.balance;
+    };
+
+    const decrementBalance = async (userId, amount) => {
+        // First find the user.
+        const user = await getUser(userId);
+
+        // Add to the user's balance.
+        await users.update({
+            id: userId,
+        }, {
+            ...user,
+            balance: Math.max(user.balance - amount, 0),
         });
 
         return user.balance;
@@ -73,7 +118,10 @@ module.exports = (prefix = 'default') => {
     return {
         getUser,
         getBalance,
+        incrementKills,
+        incrementDeaths,
         incrementBalance,
+        decrementBalance,
         setBalance,
         getItems,
         users,
