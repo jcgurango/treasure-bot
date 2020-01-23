@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const giphy = require('giphy-api')();
 const randomEmoji = require('random-emoji');
 const Sentencer = require('sentencer');
+const variables = require('../variables');
 
 /**
  * @param {Game} game
@@ -22,7 +23,7 @@ module.exports = (game) => {
         const emojis = [emoji, ...randomEmoji.random({ count: 5 }).map(({ character }) => character)];
         emojis.sort(() => Math.random() * 2 - 1);
 
-        const { user, message } = await game.modules.BASE.reactionPrompt(attachment, emojis, (reaction) => reaction.emoji.name === emoji);
+        const { user, message } = await game.modules.BASE.reactionPrompt(attachment, emojis, 60 * 60 * 1000, (reaction) => reaction.emoji.name === emoji);
 
         if (user) {
             await game.database.incrementBalance(user.id, amount);
@@ -40,7 +41,7 @@ module.exports = (game) => {
     });
 
     game.command('chest', ({ user }) => {
-        if (user.id === '220193117016424458') {
+        if (variables.isTestEnvironment) {
             chest();
         }
     });

@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "capitalize": "^2.0.1",
     "discord.js": "^11.5.1",
+    "fantasy-names": "^2.0.1",
     "giphy-api": "^2.0.1",
     "node-localdb": "0.0.3",
     "pretty-ms": "^5.1.0",

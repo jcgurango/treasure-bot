@@ -10,6 +10,7 @@ module.exports = class Game {
         this.cooldowns = require('./cooldowns');
         this.tickCallbacks = [];
         this.commands = { };
+        this.helpFile = { };
         this.channel = channel;
         this.modules = { };
     }
@@ -26,12 +27,13 @@ module.exports = class Game {
         }
     }
 
-    command(prompt, callback) {
+    command(prompt, callback, help) {
         if (!this.commands[prompt]) {
             this.commands[prompt] = [];
         }
 
         this.commands[prompt].push(callback);
+        this.helpFile[prompt] = help;
     }
 
     start() {

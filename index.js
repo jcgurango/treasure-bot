@@ -24,6 +24,7 @@ client.on('ready', () => {
         const game = new (require('./game'))(channel);
         game.register(require('./modules/base'));
         game.register(require('./modules/chest'));
+        game.register(require('./modules/rpg'));
         game.register(require('./modules/fight'));
         game.register(require('./modules/casino'));
         games[channel.id] = game;
@@ -33,7 +34,7 @@ client.on('ready', () => {
     // Create an event listener for messages
     client.on('message', async message => {
         if (isChannelApplicable(message.channel.id)) {
-            const parsed = /^treasure(?: (\w+))?(?: (.+))?$/.exec(message.content);
+            const parsed = /^treasure(?: (\w+))?(?: (.+))?$/i.exec(message.content);
 
             if (parsed) {
                 const [match, command = 'balance', args = ''] = parsed;

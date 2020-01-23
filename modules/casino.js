@@ -29,6 +29,7 @@ module.exports = (game) => {
         const { emoji } = await game.modules.BASE.reactionPrompt(
             messageText,
             headsOrTails,
+            60000,
             (reaction, sender) => sender.id === user.id
         );
 
@@ -37,10 +38,11 @@ module.exports = (game) => {
         if (emoji === answer) {
             await game.channel.send(`Lucky you, ${user.toString()}. It *was* ${emoji}. You just won ${amount} gold.`);
             await game.database.incrementBalance(user.id, amount * 2);
-            await game.modules.BASE.goldResponse(user);
         } else {
             await game.channel.send(`${user.toString()} Oof. It was actually ${answer}.`);
         }
+
+        await game.modules.BASE.goldResponse(user);
     });
 };
 

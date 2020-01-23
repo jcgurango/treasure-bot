@@ -1,9 +1,11 @@
 const db = require('node-localdb');
-const items = require('./items.json');
+const Sentencer = require('sentencer');
+const Item = require('./item');
 
 module.exports = (prefix = 'default') => {
     const users = new db(`.data/${prefix}-users.json`);
     const userItems = new db(`.data/${prefix}-userItems.json`);
+    const userStats = new db(`.data/${prefix}-userStats.json`);
 
     const getUser = async (userId) => {
         // First find the user.
@@ -22,6 +24,63 @@ module.exports = (prefix = 'default') => {
         }
 
         return user;
+    };
+
+    const getUserStats = async (userId) => {
+        // First find the user.
+        const user = await getUser(userId);
+
+        // Find the user's stats.
+        let stats = await userStats.findOne({
+            userId: user.id,
+        });
+
+        // If no stats are found...
+        if (!stats) {
+            stats = await userStats.insert({
+                userId,
+                title: Sentencer.make('{{ adjective }} {{ noun }} of {{ noun }}'),
+                level: 1,
+                XP: 0,
+                ATK: 5,
+                DEF: 5,
+            });
+        }
+
+        return stats;
+    };
+
+    const updateUserStats = async (userId, updateStats) => {
+        const stats = await getUserStats(userId);
+
+        return await userStats.update({
+            _id: stats._id,
+        }, {
+            ...stats,
+            ...updateStats,
+        });
+    };
+
+    const setUserStatsXP = async (userId, XP) => {
+        const stats = await getUserStats(userId);
+
+        return await userStats.update({
+            _id: stats._id,
+        }, {
+            ...stats,
+            XP,
+        });
+    };
+
+    const setUserStatsLevel = async (userId, level) => {
+        const stats = await getUserStats(userId);
+
+        return await userStats.update({
+            _id: stats._id,
+        }, {
+            ...stats,
+            level,
+        });
     };
 
     const getBalance = async (userId) => {
@@ -107,16 +166,24 @@ module.exports = (prefix = 'default') => {
     };
 
     const getItems = async (userId) => {
-        return (await userItems.find({
+        return await userItems.find({
             user: userId,
-        })).map(({ item, ...rest }) => ({
-            item: items[item],
-            ...rest,
-        }));
+        }).map((item) => new Item(item));
+    };
+
+    const giveItem = async (userId, item) => {
+        return await userItems.insert({
+            user: userId,
+            ...item,
+        });
     };
 
     return {
         getUser,
+        getUserStats,
+        updateUserStats,
+        setUserStatsXP,
+        setUserStatsLevel,
         getBalance,
         incrementKills,
         incrementDeaths,
@@ -124,6 +191,7 @@ module.exports = (prefix = 'default') => {
         decrementBalance,
         setBalance,
         getItems,
+        giveItem,
         users,
         userItems,
     };

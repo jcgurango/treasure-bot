@@ -1,8 +1,0 @@
-{
-    "sword-basic": {
-        "name": "Basic Sword",
-        "icon": "🗡️",
-        "type": "weapon",
-        "slots": ["hand"]
-    }
-}
