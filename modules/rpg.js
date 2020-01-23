@@ -56,12 +56,14 @@ module.exports = (game) => {
         let items = (await game.database.getItems(userLookup.id)).sort((a, b) => b.value - a.value).map((item) => item.asField());
         const maxPages = Math.ceil(items.length / ITEM_PAGE_SIZE);
         items = items.slice((page - 1) * ITEM_PAGE_SIZE);
+        const ATKBonus = equipped.reduce((val, item) => (val + (item && item.stats.ATK || 0)), 0);
+        const DEFBonus = equipped.reduce((val, item) => (val + (item && item.stats.DEF || 0)), 0);
 
         const msg = new Discord.RichEmbed({
                 title: Sentencer.make(`${userLookup.username}, ${lookupStats.title}, Level ${lookupStats.level}`),
             })
             .addField('ATK/DEF',
-                `${lookupStats.ATK.toLocaleString()}/${lookupStats.DEF.toLocaleString()}`
+                `${lookupStats.ATK.toLocaleString()} (+${ATKBonus}) / ${lookupStats.DEF.toLocaleString()} (+${DEFBonus})`
             , true)
             .addField('XP',
                 `${lookupStats.XP.toLocaleString()}/${levelXp(lookupStats.level + 1).toLocaleString()}`
