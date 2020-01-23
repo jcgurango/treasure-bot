@@ -38,23 +38,23 @@ const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, m
         )
         .addBlankField(true)
         .addField(
-            `Damage Dealt`,
+            `Damage Dealt ${fightState.player.name}`,
             'Loading...',
             true
         )
         .addField(
-            `Damage Blocked`,
+            `Damage Blocked ${fightState.monster.name}`,
             'Loading...',
             true
         )
         .addBlankField(true)
         .addField(
-            `Damage Blocked`,
+            `Damage Blocked ${fightState.player.name}`,
             'Loading...',
             true
         )
         .addField(
-            `Damage Dealt`,
+            `Damage Dealt ${fightState.monster.name}`,
             'Loading...',
             true
         )
