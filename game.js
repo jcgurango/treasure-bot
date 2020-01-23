@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = class Game {
     /**
      * 
-     * @param {Discord.Channel} channel 
+     * @param {Discord.TextChannel} channel 
      */
     constructor(channel) {
         this.database = require('./db')(process.argv[3]);

@@ -178,6 +178,10 @@ module.exports = (prefix = 'default') => {
         });
     };
 
+    const getUserIds = async () => {
+        return (await users.find({ })).map(({ id }) => id);
+    };
+
     return {
         getUser,
         getUserStats,
@@ -194,5 +198,6 @@ module.exports = (prefix = 'default') => {
         giveItem,
         users,
         userItems,
+        getUserIds,
     };
 };
