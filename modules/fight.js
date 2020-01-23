@@ -5,8 +5,9 @@ const Sentencer = require('sentencer');
 const prettyMs = require('pretty-ms');
 const monsters = require('../monsters.json');
 const variables = require('../variables');
+const Item = require('../item');
 
-const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, monsterStats) => async (user, monster, level) => {
+const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, monsterStats, giveLoot) => async (user, monster, level) => {
     const fightState = {
         monster: {
             ...monster,
@@ -169,13 +170,21 @@ const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, m
                         xpReward.toLocaleString(),
                         true,
                     )
-                    .addField(
-                        'Item Rewards',
-                        'none',
-                    )
             )
         );
 
+        // Create loot.
+        const lootBox = [];
+
+        for (let i = 0; i < Math.ceil(level / 10); i++) {
+            lootBox.push(Item.generate(level));
+
+            while (Math.random() < 0.05) {            
+                lootBox.push(Item.generate(level));
+            }
+        }
+
+        await giveLoot(user, lootBox);
         await gainXp(user, xpReward);
     } else {
         await db.incrementDeaths(user.id);
@@ -248,7 +257,16 @@ const chanceTable = [
  * @param {Game} game
  */
 module.exports = (game) => {
-    const fight = fightProcess(game.channel, game.database, game.modules.BASE.goldResponse, game.cooldowns, game.modules.RPG.gainXp, game.modules.RPG.userStats, game.modules.RPG.monsterStats);
+    const fight = fightProcess(
+        game.channel,
+        game.database,
+        game.modules.BASE.goldResponse,
+        game.cooldowns,
+        game.modules.RPG.gainXp,
+        game.modules.RPG.userStats,
+        game.modules.RPG.monsterStats,
+        game.modules.RPG.giveLoot
+    );
 
     const fightCooldownMessage = (user) => async (time) => {
         game.channel.send(`${user.toString()}, you're too worn out to fight. Try again after **${time}**.`);

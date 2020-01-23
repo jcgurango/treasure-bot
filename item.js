@@ -46,7 +46,7 @@ class Item {
         return {
             name: this.toString(),
             value: `\`${this.statsString()}\`
-*Value: ${this.value.toLocaleString()} gold*`,
+*Value: ${this.value.toLocaleString()} gold, Durability: ${this.durability}/${this.maxDurability}*`,
             inline: true,
         };
     }

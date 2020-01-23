@@ -27,34 +27,73 @@ const levelXp = (level) => ({
     "20": 355000,
 }[level] || ((level - 20) * 60000 + 355000));
 
+const ITEM_PAGE_SIZE = 11;
+
 /**
  * @param {Game} game
  */
 module.exports = (game) => {
-    game.command('stats', async ({ user, mentions }) => {
+    const getEquippedItems = async (playerId) => {
+        const stats = await game.database.getUserStats(playerId);
+        const items = await game.database.getItems(playerId);
+
+        // Get the highest possible armor and weapon for their level.
+        const weapon = items.sort((a, b) => b.value - a.value).find((item) => item.type === 'weapon' && item.level <= stats.level);
+        const armor = items.sort((a, b) => b.value - a.value).find((item) => item.type === 'armor' && item.level <= stats.level);
+
+        return [
+            weapon,
+            armor,
+        ];
+    };
+
+    const sheetCommand = async ({ user, mentions, args }) => {
         const mentionedUser = mentions.users.first();
         const userLookup = mentionedUser || user;
         const lookupStats = await game.database.getUserStats(userLookup.id);
-        const items = await game.database.getItems(userLookup.id);
+        const page = parseInt(args) || 1;
+        const equipped = await getEquippedItems(userLookup.id);
+        let items = (await game.database.getItems(userLookup.id)).sort((a, b) => b.value - a.value).map((item) => item.asField());
+        const maxPages = Math.ceil(items.length / ITEM_PAGE_SIZE);
+        items = items.slice((page - 1) * ITEM_PAGE_SIZE);
 
         const msg = new Discord.RichEmbed({
-                title: Sentencer.make(`${userLookup.username}, ${lookupStats.title}`),
+                title: Sentencer.make(`${userLookup.username}, ${lookupStats.title}, Level ${lookupStats.level}`),
             })
             .addField('ATK/DEF',
                 `${lookupStats.ATK.toLocaleString()}/${lookupStats.DEF.toLocaleString()}`
             , true)
             .addField('XP',
-                `${lookupStats.XP.toLocaleString()}/${levelXp(lookupStats.level + 1)}`
-            , true)
-            .addField('---------------', 'Equipped')
-            .addField('---------------', 'Inventory');
+                `${lookupStats.XP.toLocaleString()}/${levelXp(lookupStats.level + 1).toLocaleString()}`
+            , true);
 
-        msg.fields = [...msg.fields, ...items.sort((a, b) => b.value - a.value).map((item) => item.asField()).slice(0, 21)];
+        msg.fields = [
+            ...msg.fields,
+            {
+                name: '---------------',
+                value: 'Equipped',
+            },
+            equipped[0] && equipped[0].asField() || {
+                name: 'Fists',
+                value: 'You either have no weapon in your inventory, or are too low-level to equip any of them.',
+                inline: true,
+            },
+            equipped[1] && equipped[1].asField() || {
+                name: 'Clothes',
+                value: 'You either have no armor in your inventory, or are too low-level to equip any of them.',
+                inline: true,
+            },
+            {
+                name: '---------------',
+                value: 'Inventory',
+            },
+            ...items.slice(0, ITEM_PAGE_SIZE + 1)
+        ];
 
-        if (items.length > 21) {
+        if (items.length > ITEM_PAGE_SIZE) {
             msg.fields[msg.fields.length - 1] = {
-                name: `+ ${items.length - 20} more`,
-                value: 'To see the rest of this junk, you\'ll need to sell some items.',
+                name: `+ ${items.length - ITEM_PAGE_SIZE} more`,
+                value: `This is page ${page} of ${maxPages}. Use the \`junk\` or \`sell\` commands to get rid of some of this crap or specify a page number to browse.`,
                 inline: true,
             };
         }
@@ -62,7 +101,13 @@ module.exports = (game) => {
         await game.channel.send(
             msg,
         );
-    }, 'Displays your character sheet.');
+    };
+
+    game.command('sheet', sheetCommand, 'Displays your character sheet.');
+    game.command('stats', sheetCommand, 'Displays your character sheet.');
+    game.command('items', sheetCommand, 'Displays your character sheet.');
+    game.command('level', sheetCommand, 'Displays your character sheet.');
+    game.command('inventory', sheetCommand, 'Displays your character sheet.');
 
     game.command('loot', async ({ user }) => {
         if (variables.isTestEnvironment) {
@@ -148,12 +193,15 @@ module.exports = (game) => {
     const userStats = async (user) => {
         const stats = await game.database.getUserStats(user.id);
 
+        // Find their equipped stuff.
+        const equipped = await getEquippedItems(user.id);
+
         return {
             level: stats.level,
             ATK: stats.ATK,
             DEF: stats.DEF,
-            ATKBonus: 0,
-            DEFBonus: 0,
+            ATKBonus: equipped.reduce((val, item) => (val + (item && item.stats.ATK || 0)), 0),
+            DEFBonus: equipped.reduce((val, item) => (val + (item && item.stats.DEF || 0)), 0),
         };
     };
 
@@ -169,6 +217,7 @@ module.exports = (game) => {
     };
 
     return {
+        giveLoot,
         gainXp,
         userStats,
         monsterStats,
