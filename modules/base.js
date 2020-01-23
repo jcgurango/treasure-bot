@@ -23,7 +23,7 @@ module.exports = (game) => {
         );
     };
 
-    game.command('balance', statsCommand);
+    game.command('balance', statsCommand, 'Displays your balance.');
 
     const goldResponse = async (user) => {
         return game.channel.send(`${user.toString()} now has **${(await game.database.getBalance(user.id)).toLocaleString()} gold**.`);

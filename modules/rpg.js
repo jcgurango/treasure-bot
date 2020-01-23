@@ -62,7 +62,7 @@ module.exports = (game) => {
         await game.channel.send(
             msg,
         );
-    });
+    }, 'Displays your character sheet.');
 
     game.command('loot', async ({ user }) => {
         if (variables.isTestEnvironment) {

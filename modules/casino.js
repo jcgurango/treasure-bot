@@ -43,7 +43,7 @@ module.exports = (game) => {
         }
 
         await game.modules.BASE.goldResponse(user);
-    });
+    }, 'Tosses a coin. Guess correctly and double your money.');
 };
 
 module.exports.moduleId = 'CASINO';

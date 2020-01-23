@@ -33,7 +33,10 @@ module.exports = class Game {
         }
 
         this.commands[prompt].push(callback);
-        this.helpFile[prompt] = help;
+
+        if (help) {
+            this.helpFile[prompt] = help;
+        }
     }
 
     start() {
