@@ -4,6 +4,7 @@ const Sentencer = require('sentencer');
 const variables = require('../variables');
 const fantasyNames = require('fantasy-names');
 const Item = require('../item');
+const escapeStringRegexp = require('escape-string-regexp');
 
 const levelXp = (level) => ({
     "1": 0,
@@ -143,6 +144,56 @@ module.exports = (game) => {
         }
     });
 
+    const sellItems = async (shopkeep, buyPrice, user, items) => {
+        await game.database.removeItems(user.id, items.map(({ _id }) => _id));
+        await game.database.incrementBalance(user.id, buyPrice);
+        await game.channel.send(`**${shopkeep}**: Pleasure doing business with you!\n**${shopkeep} (under its breath)**: sucker.`)
+        await game.modules.BASE.goldResponse(user);
+    };
+
+    game.command('sell', async ({ user, args }) => {
+        const equipped = await getEquippedItems(user.id);
+        const [item] = (await game.database.getItems(user.id))
+            .filter(({ name }) => new RegExp(escapeStringRegexp(args), 'i').exec(name))
+            .sort((a, b) => a.value - b.value);
+
+        if (item) {
+            const shopkeep = shopkeepName;
+            const buyPrice = Math.floor(item.value * sellValue / 1000) * 1000;
+
+            if (equipped.find((i) => i && i._id === item._id)) {
+                await game.channel.send(new Discord.RichEmbed({
+                    title: `Sell Item`,
+                    fields: [item.asField()],
+                }));
+
+                const { emoji: acceptSellEquipped } = await game.modules.BASE.reactionPrompt(
+                    `You sure you want to sell this? It's currently equipped.`,
+                    ['✅'],
+                    60 * 1000,
+                    (reaction, reactor) => reactor.id === user.id
+                );
+
+                if (acceptSellEquipped !== '✅') {
+                    return;
+                }
+            }
+
+            const { emoji: acceptSale } = await game.modules.BASE.reactionPrompt(
+                `**${shopkeep}**: I'll take it for ${buyPrice.toLocaleString()}.`,
+                ['✅'],
+                60 * 1000,
+                (reaction, reactor) => reactor.id === user.id
+            );
+
+            if (acceptSale === '✅') {
+                return await sellItems(shopkeep, buyPrice, user, [item]);
+            }
+        } else {
+            await game.channel.send(`Eh? You don't have an item called **${args}**.`);
+        }
+    }, 'Sells a single item from your inventory.');
+
     game.command('junk', async ({ user, args }) => {
         const shopkeep = shopkeepName;
         const equipped = await getEquippedItems(user.id);
@@ -178,10 +229,7 @@ ${items.length > MAX_SELL_DISPLAY ?
         );
 
         if (emoji === '✅') {
-            await game.database.removeItems(user.id, items.map(({ _id }) => _id));
-            await game.database.incrementBalance(user.id, buyPrice);
-            game.channel.send(`**${shopkeep}**: Pleasure doing business with you!\n**${shopkeep} (under its breath)**: sucker.`)
-            game.modules.BASE.goldResponse(user);
+            await sellItems(shopkeep, buyPrice, user, items);
         }
     }, 'Sells your 10 least valuable items (excluding equipped items). Specify a number to sell that many (e.x. `tr junk 20`).');
 

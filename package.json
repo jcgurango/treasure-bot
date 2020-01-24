@@ -11,6 +11,7 @@
   "dependencies": {
     "capitalize": "^2.0.1",
     "discord.js": "^11.5.1",
+    "escape-string-regexp": "^2.0.0",
     "fantasy-names": "^2.0.1",
     "giphy-api": "^2.0.1",
     "node-localdb": "0.0.3",

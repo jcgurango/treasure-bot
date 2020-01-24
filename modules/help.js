@@ -6,12 +6,25 @@ const Discord = require('discord.js');
  */
 module.exports = (game) => {
     game.command('help', () => {
+        const commands =  Object.keys(game.helpFile).filter((command) => game.helpFile[command]);
+        const helpToCommandMap = { };
+
+        commands.forEach((command) => {
+            const helpText = game.helpFile[command];
+
+            if (!helpToCommandMap[helpText]) {
+                helpToCommandMap[helpText] = [];
+            }
+
+            helpToCommandMap[helpText].push(command);
+        });
+
         game.channel.send(
             new Discord.RichEmbed({
                 title: 'Available Commands',
-                fields: Object.keys(game.helpFile).map((command) => ({
-                    name: command,
-                    value: game.helpFile[command],
+                fields: Object.keys(helpToCommandMap).map((help) => ({
+                    name: helpToCommandMap[help].join('/'),
+                    value: help,
                     inline: true,
                 }))
             })
