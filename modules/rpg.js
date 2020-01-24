@@ -117,7 +117,7 @@ module.exports = (game) => {
 
     const regenShop = () => {
         shopkeepName = fantasyNames('fantasy')[0];
-        sellValue = Math.random() * 0.25 + 0.25;
+        sellValue = Math.random() * 0.65 + 0.25;
     };
 
     game.tick((time) => {
@@ -146,12 +146,18 @@ module.exports = (game) => {
     game.command('junk', async ({ user, args }) => {
         const shopkeep = shopkeepName;
         const equipped = await getEquippedItems(user.id);
-        const amount = parseInt(args) || 10;
+        const amount = Math.max(1, parseInt(args) || 10);
 
         const items = (await game.database.getItems(user.id))
             .filter(({ _id }) => !equipped.find((item) => item && item._id === _id))
             .sort((a, b) => a.value - b.value)
             .slice(0, amount);
+
+        if (items.length === 0) {
+            game.channel.send(`**${shopkeep}**: You have nothing of value.`);
+            return;
+        }
+
         const itemsValue = items.reduce((value, item) => (value + item.value), 0);
         const buyPrice = Math.floor(itemsValue * sellValue / 1000) * 1000;
 
