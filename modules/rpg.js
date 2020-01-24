@@ -27,7 +27,7 @@ const levelXp = (level) => ({
     "20": 355000,
 }[level] || ((level - 20) * 60000 + 355000));
 
-const ITEM_PAGE_SIZE = 11;
+const ITEM_PAGE_SIZE = 5;
 
 /**
  * @param {Game} game
