@@ -35,7 +35,7 @@ client.on('ready', () => {
     // Create an event listener for messages
     client.on('message', async message => {
         if (isChannelApplicable(message.channel.id)) {
-            const parsed = /^treasure(?: (\w+))?(?: (.+))?$/i.exec(message.content);
+            const parsed = /^(?:treasure|tr|treasurebot)(?: (\w+))?(?: (.+))?$/i.exec(message.content);
 
             if (parsed) {
                 const [match, command = 'balance', args = ''] = parsed;

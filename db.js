@@ -178,6 +178,12 @@ module.exports = (prefix = 'default') => {
         });
     };
 
+    const removeItems = async (userId, items = []) => {
+        return Promise.all(
+            items.map((item) => userItems.remove({ user: userId, _id: item }))
+        );
+    };
+
     const getUserIds = async () => {
         return (await users.find({ })).map(({ id }) => id);
     };
@@ -196,6 +202,7 @@ module.exports = (prefix = 'default') => {
         setBalance,
         getItems,
         giveItem,
+        removeItems,
         users,
         userItems,
         getUserIds,

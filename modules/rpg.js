@@ -2,6 +2,7 @@ const Game = require('../game');
 const Discord = require('discord.js');
 const Sentencer = require('sentencer');
 const variables = require('../variables');
+const fantasyNames = require('fantasy-names');
 const Item = require('../item');
 
 const levelXp = (level) => ({
@@ -28,6 +29,7 @@ const levelXp = (level) => ({
 }[level] || ((level - 20) * 60000 + 355000));
 
 const ITEM_PAGE_SIZE = 5;
+const MAX_SELL_DISPLAY = 30;
 
 /**
  * @param {Game} game
@@ -111,6 +113,21 @@ module.exports = (game) => {
     game.command('level', sheetCommand, 'Displays your character sheet.');
     game.command('inventory', sheetCommand, 'Displays your character sheet.');
 
+    let shopkeepName, sellValue;
+
+    const regenShop = () => {
+        shopkeepName = fantasyNames('fantasy')[0];
+        sellValue = Math.random() * 0.25 + 0.25;
+    };
+
+    game.tick((time) => {
+        if (time % 5 === 0) {
+            regenShop();
+        }
+    });
+
+    regenShop();
+
     game.command('loot', async ({ user }) => {
         if (variables.isTestEnvironment) {
             giveLoot(user, [
@@ -125,6 +142,42 @@ module.exports = (game) => {
             ]);
         }
     });
+
+    game.command('junk', async ({ user, args }) => {
+        const shopkeep = shopkeepName;
+        const equipped = await getEquippedItems(user.id);
+        const amount = parseInt(args) || 10;
+
+        const items = (await game.database.getItems(user.id))
+            .filter(({ _id }) => !equipped.find((item) => item && item._id === _id))
+            .sort((a, b) => a.value - b.value)
+            .slice(0, amount);
+        const itemsValue = items.reduce((value, item) => (value + item.value), 0);
+        const buyPrice = Math.floor(itemsValue * sellValue / 1000) * 1000;
+
+        const msg = `${user.toString()}, ${shopkeep} is willing to buy these for ${buyPrice.toLocaleString()} gold. Continue? (All worth ${itemsValue.toLocaleString()} gold)
+
+${items.slice(0, MAX_SELL_DISPLAY).map((item) => `- ${item.toString()} (Worth ${item.value.toLocaleString()} gold)`).join('\n')}
+${items.length > MAX_SELL_DISPLAY ?
+    `+ ${items.length - MAX_SELL_DISPLAY} more worth ${
+        items.slice(MAX_SELL_DISPLAY).reduce((value, item) => (value + item.value), 0).toLocaleString()
+    } gold`
+: ''}`;
+
+        const { emoji } = await game.modules.BASE.reactionPrompt(
+            msg,
+            ['✅'],
+            60 * 1000,
+            (reaction, reactor) => reactor.id === user.id
+        );
+
+        if (emoji === '✅') {
+            await game.database.removeItems(user.id, items.map(({ _id }) => _id));
+            await game.database.incrementBalance(user.id, buyPrice);
+            game.channel.send(`**${shopkeep}**: Pleasure doing business with you!\n**${shopkeep} (under its breath)**: sucker.`)
+            game.modules.BASE.goldResponse(user);
+        }
+    }, 'Sells your 10 least valuable items (excluding equipped items). Specify a number to sell that many (e.x. `tr junk 20`).');
 
     const gainXp = async (user, amount) => {
         const stats = await game.database.getUserStats(user.id);

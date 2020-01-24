@@ -13,6 +13,7 @@ module.exports = class Game {
         this.helpFile = { };
         this.channel = channel;
         this.modules = { };
+        this.gameTime = 0;
     }
 
     register(mod) {
@@ -22,9 +23,12 @@ module.exports = class Game {
     tick(callback) {
         if (callback) {
             this.tickCallbacks.push(callback);
-        } else {
-            this.tickCallbacks.forEach((callback) => callback());
         }
+    }
+
+    callTicks() {
+        this.tickCallbacks.forEach((callback) => callback(this.gameTime));
+        this.gameTime++;
     }
 
     command(prompt, callback, help) {
@@ -41,7 +45,7 @@ module.exports = class Game {
 
     start() {
         this.tickInterval = setInterval(() => {
-            this.tick();
+            this.callTicks();
         }, 60000);
     }
 
