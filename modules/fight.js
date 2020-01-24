@@ -176,10 +176,14 @@ const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, m
         // Create loot.
         const lootBox = [];
 
+        while (Math.random() < 0.05) {
+            lootBox.push(Item.generate(level));
+        }
+
         for (let i = 0; i < Math.ceil(level / 10); i++) {
             lootBox.push(Item.generate(level));
 
-            while (Math.random() < 0.05) {            
+            while (Math.random() < 0.05) {
                 lootBox.push(Item.generate(level));
             }
         }
@@ -261,7 +265,17 @@ module.exports = (game) => {
         const inPlayUserIds = await game.database.getUserIds();
         const inPlayMembers = game.channel.members.filter((member) => !member.user.bot && inPlayUserIds.includes(member.user.id)).array();
         const focusMember = inPlayMembers[Math.floor(Math.random() * inPlayMembers.length)];
-        const { level } = await game.modules.RPG.userStats(focusMember.user);
+        const { ATK, DEF, ATKBonus, DEFBonus } = await game.modules.RPG.userStats(focusMember.user)
+
+        // Calculate their effective level.
+        let statPoints = ATK + ATKBonus + DEF + DEFBonus - 10;
+        let level = 1;
+
+        while (statPoints > 0) {
+            statPoints -= 1 + (Math.ceil(level / 4));
+            level++;
+        }
+
         return level;
     };
 
@@ -287,7 +301,7 @@ module.exports = (game) => {
         const monster = applicableMonsters[Math.floor(Math.random() * applicableMonsters.length)];
         const { data: { image_url: gif } = { image_url: 'https://media.giphy.com/media/3o6wrdG8vt4X86Pauc/giphy.gif' } } = await giphy.random('monster');
         const baseLevel = await getBaseLevel();
-        const level = Math.max(Math.floor(Math.random() * 10) - 5 + baseLevel, 1);
+        const level = Math.max(Math.floor(Math.random() * 15) - 5 + baseLevel, 1);  
         let attachment = new Discord.RichEmbed({
             title: Sentencer.make(`A ⭐ level ${level} ⭐ {{ adjective }} {{ adjective }} ${monster.name} appeared! Press the 🗡️ to fight it!`),
         });
