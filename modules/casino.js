@@ -1,6 +1,6 @@
 const Game = require('../game');
 const Discord = require('discord.js');
-const randomEmoji = require('random-emoji');
+const randomEmoji = require('../random-emoji');
 
 /**
  * @param {Game} game
@@ -22,7 +22,7 @@ module.exports = (game) => {
 
         await game.database.decrementBalance(user.id, amount);
 
-        const headsOrTails = randomEmoji.random({ count: 2 }).map(({ character }) => character);
+        const headsOrTails = randomEmoji({ count: 2 });
 
         const messageText = `Tossing a coin for you, ${user.toString()}. Call it, ${headsOrTails[0]} or ${headsOrTails[1]}?`;
 

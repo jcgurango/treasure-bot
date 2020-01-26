@@ -1,7 +1,7 @@
 const Game = require('../game');
 const Discord = require('discord.js');
 const giphy = require('giphy-api')();
-const randomEmoji = require('random-emoji');
+const randomEmoji = require('../random-emoji');
 const Sentencer = require('sentencer');
 const variables = require('../variables');
 
@@ -12,7 +12,7 @@ module.exports = (game) => {
     const chest = async () => {
         const { data: { image_url: gif } = { image_url: 'https://media.giphy.com/media/l0ExhcMymdL6TrZ84/giphy.gif' } } = await giphy.random('gold');
     
-        const emoji = randomEmoji.random()[0].character;
+        const emoji = randomEmoji()[0];
         const amount = Math.floor((Math.random() * 1000) + 1500);
     
         let attachment = new Discord.RichEmbed({
@@ -20,7 +20,7 @@ module.exports = (game) => {
         });
     
         attachment = attachment.setImage(gif);
-        const emojis = [emoji, ...randomEmoji.random({ count: 5 }).map(({ character }) => character)];
+        const emojis = [emoji, ...randomEmoji({ count: 5 })];
         emojis.sort(() => Math.random() * 2 - 1);
 
         const { user, message } = await game.modules.BASE.reactionPrompt(attachment, emojis, 60 * 60 * 1000, (reaction) => reaction.emoji.name === emoji);
