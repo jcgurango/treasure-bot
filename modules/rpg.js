@@ -5,6 +5,7 @@ const variables = require('../variables');
 const fantasyNames = require('fantasy-names');
 const Item = require('../item');
 const escapeStringRegexp = require('escape-string-regexp');
+const colors = require('../discord-colors');
 
 const levelXp = (level) => ({
     "1": 0,
@@ -129,18 +130,19 @@ module.exports = (game) => {
 
     regenShop();
 
-    game.command('loot', async ({ user }) => {
+    game.command('loot', async ({ user, args }) => {
+        const maxLevel = parseInt(args) || 100;
+
         if (variables.isTestEnvironment) {
-            giveLoot(user, [
-                Item.generate(Math.floor(Math.random() * 100) + 1),
-                Item.generate(Math.floor(Math.random() * 100) + 1),
-                Item.generate(Math.floor(Math.random() * 100) + 1),
-                Item.generate(Math.floor(Math.random() * 100) + 1),
-                Item.generate(Math.floor(Math.random() * 100) + 1),
-                Item.generate(Math.floor(Math.random() * 100) + 1),
-                Item.generate(Math.floor(Math.random() * 100) + 1),
-                Item.generate(Math.floor(Math.random() * 100) + 1)
-            ]);
+            const items = [];
+
+            for (var i = 0; i < 10; i++) {
+                items.push(
+                    Item.generate(Math.floor(Math.random() * maxLevel) + 1)
+                );
+            }
+
+            giveLoot(user, items);
         }
     });
 
@@ -185,14 +187,9 @@ module.exports = (game) => {
             fields: [item.asField()],
         }));
 
-        const { emoji: accept } = await game.modules.BASE.reactionPrompt(
-            `You sure you want to give this item to ${mentionedUser.toString()}?`,
-            ['✅'],
-            60 * 1000,
-            (reaction, reactor) => reactor.id === user.id
-        );
+        const accept = await game.modules.BASE.acceptPrompt(user, `You sure you want to give this item to ${mentionedUser.toString()}?`);
 
-        if (accept === '✅') {
+        if (accept) {
             await game.database.moveItem(user.id, item._id, mentionedUser.id);
             await game.channel.send(`${user.toString()} gave ${mentionedUser.toString()}:`);
             await game.channel.send(new Discord.RichEmbed({
@@ -216,26 +213,16 @@ module.exports = (game) => {
                     fields: [item.asField()],
                 }));
 
-                const { emoji: acceptSellEquipped } = await game.modules.BASE.reactionPrompt(
-                    `You sure you want to sell this? It's currently equipped.`,
-                    ['✅'],
-                    60 * 1000,
-                    (reaction, reactor) => reactor.id === user.id
-                );
+                const acceptSellEquipped = await game.modules.BASE.acceptPrompt(user, `You sure you want to sell this? It's currently equipped.`);
 
-                if (acceptSellEquipped !== '✅') {
+                if (!acceptSellEquipped) {
                     return;
                 }
             }
 
-            const { emoji: acceptSale } = await game.modules.BASE.reactionPrompt(
-                `**${shopkeep}**: I'll take it for ${buyPrice.toLocaleString()}.`,
-                ['✅'],
-                60 * 1000,
-                (reaction, reactor) => reactor.id === user.id
-            );
+            const acceptSale = await game.modules.BASE.acceptPrompt(user, `**${shopkeep}**: I'll take it for ${buyPrice.toLocaleString()}.`);
 
-            if (acceptSale === '✅') {
+            if (acceptSale) {
                 return await sellItems(shopkeep, buyPrice, user, [item]);
             }
         } else {
@@ -270,17 +257,50 @@ ${items.length > MAX_SELL_DISPLAY ?
     } gold`
 : ''}`;
 
-        const { emoji } = await game.modules.BASE.reactionPrompt(
-            msg,
-            ['✅'],
-            60 * 1000,
-            (reaction, reactor) => reactor.id === user.id
-        );
+        const accept = await game.modules.BASE.acceptPrompt(user, msg);
 
-        if (emoji === '✅') {
+        if (accept) {
             await sellItems(shopkeep, buyPrice, user, items);
         }
     }, 'Sells your 10 least valuable items (excluding equipped items). Specify a number to sell that many (e.x. `tr junk 20`).');
+
+    game.command('repair', async ({ user }) => {
+        const shopkeep = shopkeepName;
+        const equipped = (await getEquippedItems(user.id)).filter(Boolean);
+        let price = equipped.reduce((value, item) => {
+            return value + ((item.maxDurability - item.durability) / item.maxDurability) * item.value;
+        }, 0);
+        price /= sellValue;
+        price = Math.floor(price / 1000) * 1000;
+
+        if (price > 0) {
+            const accept = await game.modules.BASE.acceptPrompt(user, `**${shopkeep}**: I'll repair your items for ${price.toLocaleString()} gold.`);
+    
+            if (accept) {
+                const userInfo = await game.database.getUser(user.id);
+
+                if (userInfo.balance > price) {
+                    equipped.forEach((item) => {
+                        item.durability = item.maxDurability;
+                    });
+                    await game.database.updateItems(equipped);
+                    await game.database.decrementBalance(price);
+                    await game.channel.send(`**${shopkeep}**: You're all set!`);
+                    await game.channel.send(
+                        new Discord.RichEmbed({
+                            title: `Items Repaired`,
+                            fields: equipped.map((item) => item.asField()),
+                            color: colors.ORANGE,
+                        })
+                    );
+                } else {
+                    await game.channel.send(`*${shopkeep} laughs*\n**${shopkeep}**: Come back when you have enough gold.`);
+                }
+            }
+        } else {
+            await game.channel.send(`**${shopkeep}**: You don't have any broken items equipped.`)
+        }
+    }, 'Repairs your equipped items for a fee.');
 
     const gainXp = async (user, amount) => {
         const stats = await game.database.getUserStats(user.id);
@@ -374,11 +394,46 @@ ${items.length > MAX_SELL_DISPLAY ?
         );
     };
 
+    const damageItems = async (user) => {
+        // Find their equipped stuff.
+        const equipped = (await getEquippedItems(user.id)).filter(Boolean);
+
+        // Damage them.
+        const damagedItems = equipped.map((item) => {
+            const lost = 0 + Math.floor(Math.random() * 5);
+            item.durability -= Math.min(item.durability, lost);
+            item.lostDurability = lost;
+            return item;
+        }).filter((item) => item.lostDurability > 0);
+
+        if (damagedItems.length > 0) {
+            await game.database.updateItems(damagedItems);
+            await game.channel.send(`${user.toString()}, your items have lost durability. Use the \`repair\` command to repair them.`);
+            await game.channel.send(
+                (
+                    new Discord.RichEmbed({
+                        title: `Durability Lost`,
+                        color: colors.RED,
+                        fields: damagedItems.map(item => {
+                            const field = item.asField();
+
+                            return {
+                                ...field,
+                                value: `${field.value}\n\n${item.durability === 0 ? '**:x: broken**' : `**:yellow_circle: lost ${item.lostDurability} durability**`}`
+                            };
+                        })
+                    })
+                )
+            );
+        }
+    };
+
     return {
         giveLoot,
         gainXp,
         userStats,
         monsterStats,
+        damageItems,
     };
 };
 

@@ -90,9 +90,21 @@ module.exports = (game) => {
         };
     };
 
+    const acceptPrompt = async (user, message) => {
+        const { emoji } = await game.modules.BASE.reactionPrompt(
+            message,
+            ['✅'],
+            60 * 1000,
+            (reaction, reactor) => reactor.id === user.id
+        );
+
+        return emoji === '✅';
+    };
+
     return {
         goldResponse,
         reactionPrompt,
+        acceptPrompt,
     };
 };
 

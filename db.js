@@ -196,6 +196,27 @@ module.exports = (prefix = 'default') => {
         );
     };
 
+    const updateItems = async (items = []) => {
+        await Promise.all(items.map(async (item) => {
+            if (item.durability === 0) {
+                return await userItems.remove({
+                    _id: item._id,
+                });
+            }
+
+            const retrievedItem = await userItems.findOne({
+                _id: item._id,
+            });
+
+            await userItems.update({
+                _id: item._id,
+            }, {
+                ...retrievedItem,
+                ...item,
+            });
+        }));
+    };
+
     const getUserIds = async () => {
         return (await users.find({ })).map(({ id }) => id);
     };
@@ -218,6 +239,7 @@ module.exports = (prefix = 'default') => {
         removeItems,
         users,
         userItems,
+        updateItems,
         getUserIds,
     };
 };

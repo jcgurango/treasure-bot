@@ -6,8 +6,9 @@ const prettyMs = require('pretty-ms');
 const monsters = require('../monsters.json');
 const variables = require('../variables');
 const Item = require('../item');
+const colors = require('../discord-colors');
 
-const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, monsterStats, giveLoot) => async (user, monster, level) => {
+const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, monsterStats, giveLoot, damageItems) => async (user, monster, level) => {
     const fightState = {
         monster: {
             ...monster,
@@ -118,8 +119,8 @@ const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, m
                 fightState.monster.health = Math.max(fightState.monster.health, 0);
                 fightState.player.health = Math.max(fightState.player.health, 0);
 
-                messageContent.fields[0].value = `ATK: ${fightState.player.ATK} (+${fightState.player.ATKBonus})\nDEF: ${fightState.player.DEF} (+${fightState.player.DEFBonus})\nHealth: ${fightState.player.health}`;
-                messageContent.fields[1].value = `ATK: ${fightState.monster.ATK}\nDEF: ${fightState.monster.DEF}\nHealth: ${fightState.monster.health}`;
+                messageContent.fields[0].value = `ATK: ${fightState.player.ATK.toLocaleString()} (+${fightState.player.ATKBonus.toLocaleString()})\nDEF: ${fightState.player.DEF.toLocaleString()} (+${fightState.player.DEFBonus.toLocaleString()})\nHealth: ${fightState.player.health.toLocaleString()}`;
+                messageContent.fields[1].value = `ATK: ${fightState.monster.ATK.toLocaleString()}\nDEF: ${fightState.monster.DEF.toLocaleString()}\nHealth: ${fightState.monster.health.toLocaleString()}`;
                 messageContent.fields[3].value = playerDealt.toLocaleString();
                 messageContent.fields[4].value = monsterBlock.toLocaleString();
                 messageContent.fields[6].value = playerBlock.toLocaleString();
@@ -148,7 +149,7 @@ const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, m
     interactiveMessage.edit(messageContent);
 
     const goldReward = Math.floor(Math.random() * level * 1000 / 2) + Math.floor(level * 1000 / 2);
-    const xpReward = Math.floor(Math.random() * level * 1000 / 2) + Math.floor(level * 1000 / 2);
+    let xpReward = Math.floor(Math.random() * level * 1000 / 2) + Math.floor(level * 1000 / 2);
     const dbUser = await db.getUser(user.id);
 
     if (playerWin) {
@@ -159,6 +160,7 @@ const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, m
             (
                 new Discord.RichEmbed({
                     title: log[log.length - 1],
+                    color: colors.GREEN,
                 })
                     .addField(
                         'Gold Earned',
@@ -189,8 +191,8 @@ const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, m
         }
 
         await giveLoot(user, lootBox);
-        await gainXp(user, xpReward);
     } else {
+        xpReward = Math.floor(Math.floor(Math.random() * fightState.player.level * 1000 / 2) + Math.floor(fightState.player.level * 1000 / 2) * 0.5);
         await db.incrementDeaths(user.id);
         await db.decrementBalance(user.id, goldReward);
         const cd = fightState.player.level * 60000 * Math.random() + 60000;
@@ -200,6 +202,7 @@ const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, m
             (
                 new Discord.RichEmbed({
                     title: log[log.length - 1],
+                    color: colors.RED,
                 })
                     .addField(
                         'Gold Lost',
@@ -212,13 +215,17 @@ const fightProcess = (channel, db, goldResponse, cooldowns, gainXp, userStats, m
                         true,
                     )
                     .addField(
-                        'Items Destroyed',
-                        'none',
+                        'XP Earned',
+                        xpReward.toLocaleString(),
+                        true,
                     )
             )
         );
+
+        await damageItems(user);
     }
 
+    await gainXp(user, xpReward);
     await goldResponse(user);
 };
 
@@ -265,7 +272,7 @@ module.exports = (game) => {
         const inPlayUserIds = await game.database.getUserIds();
         const inPlayMembers = game.channel.members.filter((member) => !member.user.bot && inPlayUserIds.includes(member.user.id)).array();
         const focusMember = inPlayMembers[Math.floor(Math.random() * inPlayMembers.length)];
-        const { ATK, DEF, ATKBonus, DEFBonus } = await game.modules.RPG.userStats(focusMember.user)
+        const { ATK, DEF, ATKBonus, DEFBonus } = await game.modules.RPG.userStats(focusMember.user);
 
         // Calculate their effective level.
         let statPoints = ATK + ATKBonus + DEF + DEFBonus - 10;
@@ -287,21 +294,22 @@ module.exports = (game) => {
         game.modules.RPG.gainXp,
         game.modules.RPG.userStats,
         game.modules.RPG.monsterStats,
-        game.modules.RPG.giveLoot
+        game.modules.RPG.giveLoot,
+        game.modules.RPG.damageItems,
     );
 
     const fightCooldownMessage = (user) => async (time) => {
         game.channel.send(`${user.toString()}, you're too worn out to fight. Try again after **${time}**.`);
     };
 
-    const fightPrompt = async () => {
+    const fightPrompt = async ({ setLevel = 0 } = { }) => {
         // Determine appropriate monster challenge level.
         const challengeLevel = chanceTable[Math.floor(Math.random() * chanceTable.length)];
         const applicableMonsters = monsters.filter(({ challenge }) => challenge == challengeLevel);
         const monster = applicableMonsters[Math.floor(Math.random() * applicableMonsters.length)];
         const { data: { image_url: gif } = { image_url: 'https://media.giphy.com/media/3o6wrdG8vt4X86Pauc/giphy.gif' } } = await giphy.random('monster');
         const baseLevel = await getBaseLevel();
-        const level = Math.max(Math.floor(Math.random() * 15) - 5 + baseLevel, 1);  
+        const level = setLevel || Math.max(Math.floor(Math.random() * 15) - 5 + baseLevel, 1);  
         let attachment = new Discord.RichEmbed({
             title: Sentencer.make(`A ⭐ level ${level} ⭐ {{ adjective }} {{ adjective }} ${monster.name} appeared! Press the 🗡️ to fight it!`),
         });
@@ -329,9 +337,11 @@ module.exports = (game) => {
         }
     });
 
-    game.command('fight', ({ user }) => {
+    game.command('fight', ({ args }) => {
         if (variables.isTestEnvironment) {
-            fightPrompt();
+            fightPrompt({
+                setLevel: parseInt(args) || 0,
+            });
         }
     });
 };
