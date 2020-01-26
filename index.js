@@ -46,4 +46,4 @@ client.on('ready', () => {
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
-client.login(process.argv[3]);
+client.login(process.argv[4]);
