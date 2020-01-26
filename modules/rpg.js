@@ -147,15 +147,64 @@ module.exports = (game) => {
     const sellItems = async (shopkeep, buyPrice, user, items) => {
         await game.database.removeItems(user.id, items.map(({ _id }) => _id));
         await game.database.incrementBalance(user.id, buyPrice);
-        await game.channel.send(`**${shopkeep}**: Pleasure doing business with you!\n**${shopkeep} (under its breath)**: sucker.`)
+        await game.channel.send(`**${shopkeep}**: Pleasure doing business with you!\n**${shopkeep} (under its breath)**: sucker.`);
         await game.modules.BASE.goldResponse(user);
     };
 
+    const getUserItem = async (userId, search) => {
+        const [item] = (await game.database.getItems(userId))
+            .filter(({ name }) => new RegExp(escapeStringRegexp(search), 'i').exec(name))
+            .sort((a, b) => a.value - b.value);
+
+        return item;
+    };
+
+    game.command('give', async ({ user, args, mentions }) => {
+        const [mention, search] = args.split(' ', 2);
+        const mentionedUser = mentions.users.first();
+
+        if (!mentionedUser) {
+            game.channel.send(`${user.toString()} you must specify somebody to give it to.`);
+            return;
+        }
+
+        if (!search) {
+            game.channel.send(`${user.toString()} you must specify an item.`);
+            return;
+        }
+
+        const item = await getUserItem(user.id, search);
+
+        if (!item) {
+            await game.channel.send(`Eh? You don't have an item called **${search}**.`);
+            return;
+        }
+
+        await game.channel.send(new Discord.RichEmbed({
+            title: `Give Item`,
+            fields: [item.asField()],
+        }));
+
+        const { emoji: accept } = await game.modules.BASE.reactionPrompt(
+            `You sure you want to give this item to ${mentionedUser.toString()}?`,
+            ['✅'],
+            60 * 1000,
+            (reaction, reactor) => reactor.id === user.id
+        );
+
+        if (accept === '✅') {
+            await game.database.moveItem(user.id, item._id, mentionedUser.id);
+            await game.channel.send(`${user.toString()} gave ${mentionedUser.toString()}:`);
+            await game.channel.send(new Discord.RichEmbed({
+                title: `Item Given`,
+                fields: [item.asField()],
+            }));
+        }
+    });
+
     game.command('sell', async ({ user, args }) => {
         const equipped = await getEquippedItems(user.id);
-        const [item] = (await game.database.getItems(user.id))
-            .filter(({ name }) => new RegExp(escapeStringRegexp(args), 'i').exec(name))
-            .sort((a, b) => a.value - b.value);
+        const item = await getUserItem(user.id, args);
 
         if (item) {
             const shopkeep = shopkeepName;

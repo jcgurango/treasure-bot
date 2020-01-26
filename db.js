@@ -178,6 +178,18 @@ module.exports = (prefix = 'default') => {
         });
     };
 
+    const moveItem = async (userId, itemId, newUserId) => {
+        const item = await userItems.findOne({ _id: itemId });
+
+        return await userItems.update({
+            _id: itemId,
+            user: userId,
+        }, {
+            ...item,
+            user: newUserId,
+        });
+    };
+
     const removeItems = async (userId, items = []) => {
         return Promise.all(
             items.map((item) => userItems.remove({ user: userId, _id: item }))
@@ -202,6 +214,7 @@ module.exports = (prefix = 'default') => {
         setBalance,
         getItems,
         giveItem,
+        moveItem,
         removeItems,
         users,
         userItems,

@@ -23,7 +23,37 @@ module.exports = (game) => {
         );
     };
 
-    game.command('balance', statsCommand, 'Displays your balance.');
+    game.command('balance', statsCommand, 'Displays your gold, kills, and deaths.');
+    game.command('kills', statsCommand, 'Displays your gold, kills, and deaths.');
+    game.command('deaths', statsCommand, 'Displays your gold, kills, and deaths.');
+
+    game.command('pay', async ({ user, mentions, args = '' }) => {
+        const [mention, specifiedAmount] = args.split(' ');
+        const mentionedUser = mentions.users.first();
+
+        if (!mentionedUser) {
+            game.channel.send(`${user.toString()} you must specify somebody to give it to.`);
+            return;
+        }
+
+        const amount = Math.max(1, parseInt(specifiedAmount));
+
+        if (!amount) {
+            game.channel.send(`${user.toString()} you must specify an amount.`);
+            return;
+        }
+        
+        const userInfo = await game.database.getUser(user.id);
+        
+        if (userInfo.balance < amount) {
+            game.channel.send(`${user.toString()} you don't have that much to give.`);
+            return;
+        }
+
+        await game.database.decrementBalance(user.id, amount);
+        await game.database.incrementBalance(mentionedUser.id, amount);
+        game.channel.send(`${user.toString()} just gave ${mentionedUser.toString()} ${amount.toLocaleString()} gold!`);
+    }, 'Gives another user your gold.');
 
     const goldResponse = async (user) => {
         return game.channel.send(`${user.toString()} now has **${(await game.database.getBalance(user.id)).toLocaleString()} gold**.`);
