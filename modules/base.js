@@ -55,6 +55,79 @@ module.exports = (game) => {
         game.channel.send(`${user.toString()} just gave ${mentionedUser.toString()} ${amount.toLocaleString()} gold!`);
     }, 'Gives another user your gold.');
 
+    const leaderboardCommand = async () => {
+        const inPlayUserIds = await game.database.getUserIds();
+        const inPlayMembers = game.channel.members.filter((member) => !member.user.bot && inPlayUserIds.includes(member.user.id)).array();
+
+        const inPlayUserInfo = await Promise.all(inPlayMembers.map(async ({ user }) => {
+            const info = await game.database.getUser(user.id);
+            const items = await game.database.getItems(user.id);
+            const rpg = await game.database.getUserStats(user.id);
+
+            return {
+                user,
+                info,
+                items,
+                netWorth: items.reduce((val, { value }) => (val + value), 0) + info.balance,
+                rpg,
+            };
+        }));
+
+        await game.channel.send(
+            new Discord.RichEmbed({
+                title: `Leaderboard`,
+            })
+            .addField(
+                'Balance',
+                inPlayUserInfo
+                .sort((a, b) => (b.info.balance - a.info.balance))
+                .map((user, index) => `${index + 1}. ${user.user.toString()} - ${user.info.balance.toLocaleString()} gold`)
+                .slice(0, 10)
+                .join('\n'),
+                true
+            )
+            .addField(
+                'XP',
+                inPlayUserInfo
+                .sort((a, b) => (b.rpg.XP - a.rpg.XP))
+                .map((user, index) => `${index + 1}. ${user.user.toString()} - ${user.rpg.XP.toLocaleString()} (Level ${user.rpg.level})`)
+                .slice(0, 10)
+                .join('\n'),
+                true
+            )
+            .addField(
+                'Net Worth',
+                inPlayUserInfo
+                .sort((a, b) => (b.netWorth - a.netWorth))
+                .map((user, index) => `${index + 1}. ${user.user.toString()} - ${user.netWorth.toLocaleString()} gold`)
+                .slice(0, 10)
+                .join('\n'),
+                true
+            )
+            .addField(
+                'Kills',
+                inPlayUserInfo
+                .sort((a, b) => (b.info.kills - a.info.kills))
+                .map((user, index) => `${index + 1}. ${user.user.toString()} - ${user.info.kills.toLocaleString()} kills`)
+                .slice(0, 10)
+                .join('\n'),
+                true
+            )
+            .addField(
+                'Deaths',
+                inPlayUserInfo
+                .sort((a, b) => (b.info.deaths - a.info.deaths))
+                .map((user, index) => `${index + 1}. ${user.user.toString()} - ${user.info.deaths.toLocaleString()} deaths`)
+                .slice(0, 10)
+                .join('\n'),
+                true
+            ),
+        );
+    };
+
+    game.command('leaderboard', leaderboardCommand, 'Displays the top users by balance/kill/deaths/XP/Net worth');
+    game.command('lb', leaderboardCommand, 'Displays the top users by balance/kill/deaths/XP/Net worth');
+
     const goldResponse = async (user) => {
         return game.channel.send(`${user.toString()} now has **${(await game.database.getBalance(user.id)).toLocaleString()} gold**.`);
     };
