@@ -30,7 +30,7 @@ module.exports = (game) => {
             await game.modules.BASE.goldResponse(user);
             await message.edit(Sentencer.make(`The {{ adjective }} {{ adjective }} ${user.toString()} got this!`));
         } else {
-            await message.edit(new Discord.RichEmbed({ title: Sentencer.make(`Well, {{ adjective }} {{ nouns }} with {{ adjective }} {{ nouns }}. Nobody got it.`) }));
+            await message.delete();
         }
     };
 
