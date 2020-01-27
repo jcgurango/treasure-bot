@@ -6,6 +6,7 @@ const rarityEmojiMap = {
     enchanted: ':blue_square:',
     rare: ':yellow_square:',
     legendary: ':purple_square:',
+    special: ':green_square:',
 };
 
 const lootTable = [
@@ -24,7 +25,13 @@ class Item {
 
     statsString() {
         const lines = [
-            `Level ${this.level} ${capitalize(this.rarity)} ${this.type === 'armor' ? 'Armor' : 'Weapon'}`
+            `Level ${this.level} ${capitalize(this.rarity)} ${
+                this.type === 'armor' && 'Armor' || ''
+            }${
+                this.type === 'weapon' && 'Weapon' || ''
+            }${
+                this.type === 'item' && 'Item' || ''
+            }`
         ];
 
         if (this.stats.ATK) {
@@ -33,6 +40,10 @@ class Item {
 
         if (this.stats.DEF) {
             lines.push(`+${this.stats.DEF} DEF`);
+        }
+
+        if (this.description) {
+            lines.push(this.description);
         }
 
         return lines.join('\n');

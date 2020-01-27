@@ -115,11 +115,81 @@ module.exports = (game) => {
     game.command('level', sheetCommand, 'Displays your character sheet.');
     game.command('inventory', sheetCommand, 'Displays your character sheet.');
 
-    let shopkeepName, sellValue;
+    let shopkeepName, sellValue, shopItems;
 
-    const regenShop = () => {
+    game.command('shop', () => {
+        game.channel.send(
+            new Discord.RichEmbed({
+                title: `${shopkeepName}'s Wares (Changes every 5 minutes)`,
+                fields: shopItems.map((item) => item.asField()),
+            })
+        );
+    }, 'Displays the shop.');
+
+    const searchItems = (items, search) => {
+        const [item] = items
+            .filter(({ name }) => new RegExp(escapeStringRegexp(search), 'i').exec(name))
+            .sort((a, b) => a.value - b.value);
+
+        return item;
+    };
+
+    game.command('buy', async ({ user, args }) => {
+        if (!args) return;
+
+        // Find the item.
+        const shopkeep = shopkeepName;
+        const item = searchItems(shopItems, args);
+
+        if (!item) {
+            return game.channel.send(`No item found with name ${args}.`);
+        }
+
+        const { balance } = await game.database.getUser(user.id);
+
+        if (item.value > balance) {
+            return game.channel.send(`**${shopkeep}**: Pfft, you can't afford that.`);
+        }
+
+        const accept = await game.modules.BASE.acceptPrompt(user, new Discord.RichEmbed({
+            title: `Buy for ${item.value.toLocaleString()} gold?`,
+            fields: [item.asField()],
+        }));
+
+        if (accept) {
+            shopItems.splice(shopItems.indexOf(item), 1);
+            await game.database.giveItem(user.id, item);
+            await game.database.decrementBalance(item.value);
+            await game.channel.send(`**${shopkeep}**: Pleasure doing business with you!\n**${shopkeep} (under its breath)**: sucker.`);
+        }
+    }, 'Buys an item from the shop.');
+
+    const regenShop = async () => {
         shopkeepName = fantasyNames('fantasy')[0];
         sellValue = Math.random() * 0.65 + 0.25;
+        shopItems = [];
+
+        const inPlayUserIds = await game.database.getUserIds();
+        const inPlayMembers = game.channel.members.filter((member) => !member.user.bot && inPlayUserIds.includes(member.user.id)).array();
+
+        for (let i = 0; i < 14; i++) {
+            const focusMember = inPlayMembers[Math.floor(Math.random() * inPlayMembers.length)];
+            const { level: focusLevel } = await game.modules.RPG.userStats(focusMember.user);
+            const level = Math.max(1, Math.floor(focusLevel + Math.random() * 10 - 5));
+            shopItems.push(Item.generate(level));
+        }
+
+        shopItems.push(new Item({
+            name: 'IRL Beer of Choice',
+            type: 'item',
+            rarity: 'special',
+            durability: 100000,
+            maxDurability: 100000,
+            level: 100,
+            value: 10000000,
+            description: 'A free real-life beer claimable from `<@220193117016424458>`.',
+            stats: { },
+        }));
     };
 
     game.tick((time) => {
@@ -154,11 +224,7 @@ module.exports = (game) => {
     };
 
     const getUserItem = async (userId, search) => {
-        const [item] = (await game.database.getItems(userId))
-            .filter(({ name }) => new RegExp(escapeStringRegexp(search), 'i').exec(name))
-            .sort((a, b) => a.value - b.value);
-
-        return item;
+        return await searchItems(await game.database.getItems(userId), search);
     };
 
     game.command('give', async ({ user, args, mentions }) => {
