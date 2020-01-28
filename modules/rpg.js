@@ -180,14 +180,14 @@ module.exports = (game) => {
         }
 
         shopItems.push(new Item({
-            name: 'IRL Beer of Choice',
+            name: 'IRL Drink of Choice',
             type: 'item',
             rarity: 'special',
             durability: 100000,
             maxDurability: 100000,
             level: 100,
             value: 10000000,
-            description: 'A free real-life beer claimable from `<@220193117016424458>`.',
+            description: 'A free real-life drink claimable from `<@220193117016424458>`. (Max 200 pesos)',
             stats: { },
         }));
     };
@@ -350,7 +350,7 @@ ${items.length > MAX_SELL_DISPLAY ?
                         item.durability = item.maxDurability;
                     });
                     await game.database.updateItems(equipped);
-                    await game.database.decrementBalance(price);
+                    await game.database.decrementBalance(user.id, price);
                     await game.channel.send(`**${shopkeep}**: You're all set!`);
                     await game.channel.send(
                         new Discord.RichEmbed({
